@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 var img = document.createElement('img'); img.src = 'https://cdn.last.fm/favicon.ico'; 
-img.height = '24px';
+img.height = 24;
 document.getElementById('left-content').appendChild(img);
 img.onclick = main;
 
