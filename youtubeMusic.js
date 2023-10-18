@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1
+// @version      0.0.1.1
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -106,7 +106,7 @@ function getTracksInfo() {
                 trackDiv.querySelector('span.track-scrobbles-span').innerText = this.response.track.userplaycount;
 
                 if (this.response.track.userloved == 1) {
-                    trackDiv.innerHTML += '<font color="red" title="Loved track">&hearts;&nbsp;</font>';
+                    trackDiv.innerHTML += '&nbsp;<font color="red" title="Loved track">&hearts;</font>';
                 }
             }
 
