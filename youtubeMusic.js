@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1.1
+// @version      0.0.1.2
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
+// @downloadURL  https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
 // ==/UserScript==
 
 var img = document.createElement('img'); img.src = 'https://cdn.last.fm/favicon.ico'; 
