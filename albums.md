@@ -14,8 +14,6 @@
 
 ## released
 
-**2016-01-04 [Selected Mannequin Records 2015 Compilation](https://music.youtube.com/playlist?list=OLAK5uy_mfVl9guD1j2o24_QYihgQo_Frc-B4PeXs "12tracks • 1h8min")**
-
 **[Oppenheimer Analysis](https://www.last.fm/music/Oppenheimer+Analysis "minimal synth, minimal wave, electronic, 80s, minimal electronic") 1982 [New Mexico](https://music.youtube.com/playlist?list=OLAK5uy_nmoZqiK1lNXqwUCwrs8DbHZz4tEmbXWCM "12tracks • 55min")**
 
 **[The Horrors](https://www.last.fm/music/The+Horrors "garage rock, indie, horror punk, british") 2017-09-22 [Luminous](https://music.youtube.com/playlist?list=OLAK5uy_mKI0b2evvk79XY_IY8V52CpPhO8kC6wos "10tracks • 51min")**
@@ -35,6 +33,15 @@
 
 **[Vanishing Twin](https://www.last.fm/music/Vanishing+Twin) 2019-06-07 [The Age of Immunology](https://music.youtube.com/playlist?list=OLAK5uy_l4K-Kcs8McNGYA93jDEPoMKoF2QSJqug4)** 10tracks 45min  
 *psychedelic pop, psychedelic, art pop, british, experimental*
+
+**[Musumeci](https://www.last.fm/music/Musumeci) 2019 [Arcade](https://music.youtube.com/playlist?list=OLAK5uy_nBnGlvAkDWpG1o610dp6ruotYYl2zeqMs)** 7tracks 42min  
+*minimal wave, minimal electronic, deep house, 80's, italian synthwave*
+
+**[Nico Fidenco](https://www.last.fm/music/Nico+Fidenco) 2013 [Porno Holocaust (Original Motion Picture Soundtrack)](https://music.youtube.com/playlist?list=OLAK5uy_llL7OcZbaZc08hGxkvTRK_s6KHLB_W9N4)** 18tracks 59min  
+*italian, Soundtrack, singer-songwriter, composer, italiana*
+
+**[Carmody](https://www.last.fm/music/Carmody) 2009 [A Better Spider 1981-1985](https://music.youtube.com/playlist?list=OLAK5uy_lhdraz2pBNoKF0xlc7FCrIHU29MFO4TCQ)** 14tracks 59min  
+*new wave, synthpop, minimal synth, minimal wave, 80s*
 
 <!--
 **[]( "")  [](https://music.youtube.com/playlist?list= "tracks • min")**
