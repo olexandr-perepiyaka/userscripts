@@ -1,32 +1,47 @@
 ## not released yet
 
-**[King Gizzard & The Lizard Wizard](# "psychedelic rock, garage rock, psychedelic, australian") 2023-10-27 [The Silver Cord](https://music.youtube.com/search?q=King+Gizzard+%26+The+Lizard+Wizard+The+Silver+Cord "14tracks • ??min")** <a href="https://kinggizzard.bandcamp.com/album/the-silver-cord" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>
+**[King Gizzard & The Lizard Wizard](https://www.last.fm/music/King+Gizzard+&+The+Lizard+Wizard) 2023-10-27 [The Silver Cord](https://music.youtube.com/search?q=King+Gizzard+%26+The+Lizard+Wizard+The+Silver+Cord)** 14tracks <a href="https://kinggizzard.bandcamp.com/album/the-silver-cord" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
+*psychedelic rock, garage rock, psychedelic, australian*
 
-**[Cold War Kids](https://www.last.fm/music/Cold+War+Kids "indie, indie rock, seen live, alternative, rock") 2023-11-03 [Cold War Kids](https://music.youtube.com/search?q=Cold+War+Kids "youtube music search")**
+**[Cold War Kids](https://www.last.fm/music/Cold+War+Kids) 2023-11-03 [Cold War Kids](https://music.youtube.com/search?q=Cold+War+Kids "youtube music search")**  
+*indie, indie rock, alternative, rock*
 
-**[Jonathan Rado](https://www.last.fm/music/Jonathan+Rado "psychedelic, indie rock, psychedelic rock, foxygen, indie") 2023-12-01 [For Who The Bell Tolls For](https://music.youtube.com/playlist?list=OLAK5uy_mRSndQ8vO9hkbQm8wlv9EMBbRS2GhIEjM "7tracks • 34min")**
+**[Kurt Vile](https://www.last.fm/music/Kurt+Vile) 2023-11-17 [Another Good Year For The Roses](https://music.youtube.com/search?q=Kurt+Vile+Another+good+year+for+the+roses)**  
+*lo-fi, psychedelic, indie, bedroom pop*
 
-**[Torres](https://www.last.fm/music/Torres "indie, folk, alternative, seen live, indie pop") 2024-01-26 [What an enormous room](https://music.youtube.com/playlist?list=OLAK5uy_nspNBxn0XQNafAnqzMQFrc7ZVj1HMDb3w "10tracks • 35min")**
+**[Jonathan Rado](https://www.last.fm/music/Jonathan+Rado) 2023-12-01 [For Who The Bell Tolls For](https://music.youtube.com/playlist?list=OLAK5uy_mRSndQ8vO9hkbQm8wlv9EMBbRS2GhIEjM)** 7tracks 34min  
+*psychedelic, indie rock, psychedelic rock, foxygen, indie*
 
-**[Sarah Jarosz](https://www.last.fm/music/Sarah+Jarosz "folk, bluegrass, singer-songwriter, female vocalists, americana") 2024-01-26 [Polaroid Lovers](https://music.youtube.com/search?q=Sarah+Jarosz+Polaroid+Lovers "??tracks • ??min")** <a href="https://sarahjarosz.bandcamp.com/album/polaroid-lovers" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>
+**[Torres](https://www.last.fm/music/Torres) 2024-01-26 [What an enormous room](https://music.youtube.com/playlist?list=OLAK5uy_nspNBxn0XQNafAnqzMQFrc7ZVj1HMDb3w)** 10tracks 35min  
+*indie, folk, alternative, indie pop*
 
-**[veronicavon](https://www.last.fm/music/veronicavon "bedroom pop") 2024-02-09 [Deep End](https://music.youtube.com/search?q=veronicavon+Deep+End "youtube music search")** <a href="https://veronicavon.bandcamp.com/album/deep-end" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>
+**[Sarah Jarosz](https://www.last.fm/music/Sarah+Jarosz) 2024-01-26 [Polaroid Lovers](https://music.youtube.com/search?q=Sarah+Jarosz+Polaroid+Lovers)** <a href="https://sarahjarosz.bandcamp.com/album/polaroid-lovers" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
+*folk, bluegrass, singer-songwriter, female vocalists, americana*
+
+**[veronicavon](https://www.last.fm/music/veronicavon) 2024-02-09 [Deep End](https://music.youtube.com/search?q=veronicavon+Deep+End "youtube music search")** <a href="https://veronicavon.bandcamp.com/album/deep-end" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
+*bedroom pop*
 
 ## released
 
-**[The Horrors](https://www.last.fm/music/The+Horrors "garage rock, indie, horror punk, british") 2017-09-22 [Luminous](https://music.youtube.com/playlist?list=OLAK5uy_mKI0b2evvk79XY_IY8V52CpPhO8kC6wos "10tracks • 51min")**
+**[The Horrors](https://www.last.fm/music/The+Horrors) 2017-09-22 [Luminous](https://music.youtube.com/playlist?list=OLAK5uy_mKI0b2evvk79XY_IY8V52CpPhO8kC6wos)** 10tracks 51min  
+*garage rock, indie, horror punk, british*
 
-**[Police des moeurs](https://www.last.fm/music/Police+des+moeurs "minimal synth, minimal wave, coldwave, new wave, synthpop") 2020-04-03 [Péril](https://music.youtube.com/playlist?list=OLAK5uy_lKHDajEsBAnPk0swN6hKiXuvsTAPSzBWU "14tracks • 36min")**
+**[Police des moeurs](https://www.last.fm/music/Police+des+moeurs) 2020-04-03 [Péril](https://music.youtube.com/playlist?list=OLAK5uy_lKHDajEsBAnPk0swN6hKiXuvsTAPSzBWU)** 14tracks 36min  
+*minimal synth, minimal wave, coldwave, new wave, synthpop*
 
-**[Ashbury Heights](https://www.last.fm/music/Ashbury+Heights "synthpop, futurepop, electronic, swedish, electro") 2015-07-24 [The Looking Glass Society](https://music.youtube.com/playlist?list=OLAK5uy_ndM2AZtRfBU_3K2qusFyUc1LUS6TAqhR4 "12tracks • 55min")**
+**[Ashbury Heights](https://www.last.fm/music/Ashbury+Heights) 2015-07-24 [The Looking Glass Society](https://music.youtube.com/playlist?list=OLAK5uy_ndM2AZtRfBU_3K2qusFyUc1LUS6TAqhR4)** 12tracks 55min  
+*synthpop, futurepop, electronic, swedish, electro*
 
-**[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde "folk, indie pop, singer-songwriter") 2020-11-20 [9 Songs About Love](https://music.youtube.com/playlist?list=OLAK5uy_nip9Nc9qhITacWV19lKqTdJPLkzw8bkk0 "9tracks • 34min")**
+**[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2020-11-20 [9 Songs About Love](https://music.youtube.com/playlist?list=OLAK5uy_nip9Nc9qhITacWV19lKqTdJPLkzw8bkk0)** 9tracks 34min  
+*folk, indie pop, singer-songwriter*
 
-**[Boris](https://www.last.fm/music/Boris "drone, stoner rock, experimental, sludge, doom metal") & [Merzbow](https://www.last.fm/music/Merzbow "noise, experimental, industrial, Japanoise, japanese") 2023-10-03 [04092001](https://music.youtube.com/playlist?list=OLAK5uy_kohgK4-QXQQfGLL3Q-ktwp7xW1zGYA9kI "7tracks • 32min")**
+**[Boris](https://www.last.fm/music/Boris "drone, stoner rock, experimental, sludge, doom metal") & [Merzbow](https://www.last.fm/music/Merzbow "noise, experimental, industrial, Japanoise, japanese") 2023-10-03 [04092001](https://music.youtube.com/playlist?list=OLAK5uy_kohgK4-QXQQfGLL3Q-ktwp7xW1zGYA9kI)** 7tracks 32min  
+*drone, stoner rock, experimental, sludge, doom metal, noise, industrial, japanoise, japanese*
 
-**[Hot Glue](https://hotgluetheband.bandcamp.com/ "alternative alternativerock indierock poprock") 2023-08-31 [Hatchet](https://music.youtube.com/playlist?list=OLAK5uy_lPMfxm5BSIAQwueTBhPR79ESJ7wm03xFU "10tracks • 36min")** <a href="https://hotgluetheband.bandcamp.com/album/hatchet" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>
+**[Hot Glue](https://hotgluetheband.bandcamp.com/) 2023-08-31 [Hatchet](https://music.youtube.com/playlist?list=OLAK5uy_lPMfxm5BSIAQwueTBhPR79ESJ7wm03xFU)** 10tracks 36min <a href="https://hotgluetheband.bandcamp.com/album/hatchet" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
+*alternative alternativerock indierock poprock*
 
-**[The Kilimanjaro Darkjazz Ensemble](https://www.last.fm/music/The+Kilimanjaro+Darkjazz+Ensemble) 2009-03-11 [Here Be Dragons](https://music.youtube.com/playlist?list=OLAK5uy_meD93DsxRj5LE1SfKAjj3rc9FYoKrfrxM) 9tracks 55min**  
+**[The Kilimanjaro Darkjazz Ensemble](https://www.last.fm/music/The+Kilimanjaro+Darkjazz+Ensemble) 2009-03-11 [Here Be Dragons](https://music.youtube.com/playlist?list=OLAK5uy_meD93DsxRj5LE1SfKAjj3rc9FYoKrfrxM)** 9tracks 55min  
 *dark jazz, jazz, experimental, ambient, electronic*
 
 **[Vanishing Twin](https://www.last.fm/music/Vanishing+Twin) 2019-06-07 [The Age of Immunology](https://music.youtube.com/playlist?list=OLAK5uy_l4K-Kcs8McNGYA93jDEPoMKoF2QSJqug4)** 10tracks 45min  
@@ -42,6 +57,11 @@
 *new wave, synthpop, minimal synth, minimal wave, 80s*
 
 <!--
+
+**[ARTIST](https://www.last.fm/music/) DATE [ALBUM](https://music.youtube.com/playlist?list=)** Ntracks Nmin  
+*tags*
+
+
 **[]( "")  [](https://music.youtube.com/playlist?list= "tracks • min")**
 
 <span title=""></span> - <span title=""></span> **()** 
