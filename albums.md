@@ -14,8 +14,6 @@
 
 ## released
 
-**[Oppenheimer Analysis](https://www.last.fm/music/Oppenheimer+Analysis "minimal synth, minimal wave, electronic, 80s, minimal electronic") 1982 [New Mexico](https://music.youtube.com/playlist?list=OLAK5uy_nmoZqiK1lNXqwUCwrs8DbHZz4tEmbXWCM "12tracks • 55min")**
-
 **[The Horrors](https://www.last.fm/music/The+Horrors "garage rock, indie, horror punk, british") 2017-09-22 [Luminous](https://music.youtube.com/playlist?list=OLAK5uy_mKI0b2evvk79XY_IY8V52CpPhO8kC6wos "10tracks • 51min")**
 
 **[Police des moeurs](https://www.last.fm/music/Police+des+moeurs "minimal synth, minimal wave, coldwave, new wave, synthpop") 2020-04-03 [Péril](https://music.youtube.com/playlist?list=OLAK5uy_lKHDajEsBAnPk0swN6hKiXuvsTAPSzBWU "14tracks • 36min")**

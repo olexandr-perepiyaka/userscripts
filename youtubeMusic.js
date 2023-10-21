@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.1.2
+// @version      0.0.2
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -52,43 +52,46 @@ function main() {
 }
 
 function createScrobbleDiv(trackDiv, trackStr, artistStr) {
-    var scrblsDiv, trackScrblsDiv, trackScrblsSpan;
-    if (trackDiv.nextSibling && trackDiv.nextSibling.className == 'scrobbles-div') {
-        scrblsDiv = trackDiv.nextSibling;
-        trackScrblsSpan = scrblsDiv.querySelector('span.track-scrobbles-span');
-        trackScrblsSpan.innerText = 'request';
-        trackScrblsSpanNext = scrblsDiv.querySelector('span:nth-child(2)');
-        trackScrblsSpanNext.innerText = " scrobbles of track " + artistStr + " - " + trackStr;
+    var trackDl, trackScroblesDd, trackInfoDd;
+    if (trackDiv.nextSibling && trackDiv.nextSibling.className == 'track-scrobbles-info') {
+        trackDl = trackDiv.nextSibling;
+        trackScroblesDd = trackDl.querySelector('dd.track-scrobbles');
+        trackInfoDd = trackDl.querySelector('dd.track-info');
+        trackScroblesDd.innerText = '';
+        trackInfoDd.innerText = '';
     } else {
-        scrblsDiv = document.createElement('div');
-        scrblsDiv.className = 'scrobbles-div';
-        trackDiv.insertAdjacentElement("afterend", scrblsDiv);
+        trackDl = document.createElement('dl');
+        trackDl.className = 'track-scrobbles-info';
+        trackDl.dataset.track = trackStr;
+        trackDl.dataset.artist = artistStr;
+        trackDiv.insertAdjacentElement("afterend", trackDl);
 
-        trackScrblsDiv = document.createElement('div');
-        trackScrblsDiv.className = 'tack-scrobbles-div';
-        trackScrblsDiv.dataset.track = trackStr;
-        trackScrblsDiv.dataset.artist = artistStr;
-        scrblsDiv.appendChild(trackScrblsDiv);
+        var trackArtistDt = document.createElement('dt');
 
-        trackScrblsSpan = document.createElement('span');
-        trackScrblsSpan.className = 'track-scrobbles-span';
-        trackScrblsSpan.innerText = 'request';
-        trackScrblsDiv.appendChild(trackScrblsSpan);
+        trackArtistDt.innerText = artistStr + " - " + trackStr;
+        trackDl.appendChild(trackArtistDt);
 
-        trackScrblsSpan = document.createElement('span');
-        trackScrblsSpan.innerText = " scrobbles of track " + artistStr + " - " + trackStr;
-        trackScrblsDiv.appendChild(trackScrblsSpan);
+        trackScroblesDd = document.createElement('dd');
+        trackScroblesDd.className = 'track-scrobbles';
+        trackScroblesDd.style.marginInlineStart = '20px';
+
+        trackDl.appendChild(trackScroblesDd);
+
+        trackInfoDd = document.createElement('dd');
+        trackInfoDd.className = 'track-info';
+        trackInfoDd.style.marginInlineStart = '20px';
+        trackDl.appendChild(trackInfoDd);
     }
 }
 
 function getTracksInfo() {
-    document.querySelectorAll('div.tack-scrobbles-div').forEach(function (trackDiv) {
+    document.querySelectorAll('dl.track-scrobbles-info').forEach(function (trackDl) {
         var url =
             'https://ws.audioscrobbler.com/2.0/?method=track.getInfo'
             + '&user=' + lastfmNickname
             + '&api_key=' + lastfmAPIKey
-            + '&artist=' + encodeURIComponent(trackDiv.dataset.artist).replace(/%20/g, '+')
-            + '&track=' + encodeURIComponent(trackDiv.dataset.track).replace(/%20/g, '+')
+            + '&artist=' + encodeURIComponent(trackDl.dataset.artist).replace(/%20/g, '+')
+            + '&track=' + encodeURIComponent(trackDl.dataset.track).replace(/%20/g, '+')
             + '&format=json'
         ;
         console.log(url);
@@ -101,13 +104,11 @@ function getTracksInfo() {
             console.log(this.response);
 
             if (this.response.error !== undefined) {
-                trackDiv.querySelector('span.track-scrobbles-span').innerText = 'error during request';
-                trackDiv.querySelector('span:nth-child(2)').innerText += '; error message:' + this.response.message;
+                trackDl.querySelector('dd.track-info').innerHTML = 'track info error: ' + this.response.message;
             } else {
-                trackDiv.querySelector('span.track-scrobbles-span').innerText = this.response.track.userplaycount;
-
+                trackDl.querySelector('dd.track-info').innerHTML = this.response.track.userplaycount + ' playcount' + (this.response.track.userplaycount == 1 ? '' : 's');
                 if (this.response.track.userloved == 1) {
-                    trackDiv.innerHTML += '&nbsp;<font color="red" title="Loved track">&hearts;</font>';
+                    trackDl.querySelector('dd.track-info').innerHTML += ';&nbsp;<font color="cyan">&hearts;</font> loved track';
                 }
             }
 
