@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
+// @updateURL    https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
 // ==/UserScript==
 
-var img = document.createElement('img'); img.src = 'https://cdn.last.fm/favicon.ico'; 
+var img = document.createElement('img'); img.src = 'https://cdn.last.fm/favicon.ico';
 img.height = 24;
 document.getElementById('left-content').appendChild(img);
 img.onclick = main;
@@ -49,6 +50,7 @@ function main() {
     }
 
     getTracksInfo();
+    getTracksScrobbles();
 }
 
 function createScrobbleDiv(trackDiv, trackStr, artistStr) {
@@ -57,8 +59,6 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         trackDl = trackDiv.nextSibling;
         trackScroblesDd = trackDl.querySelector('dd.track-scrobbles');
         trackInfoDd = trackDl.querySelector('dd.track-info');
-        trackScroblesDd.innerText = '';
-        trackInfoDd.innerText = '';
     } else {
         trackDl = document.createElement('dl');
         trackDl.className = 'track-scrobbles-info';
@@ -82,6 +82,8 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         trackInfoDd.style.marginInlineStart = '20px';
         trackDl.appendChild(trackInfoDd);
     }
+    trackScroblesDd.innerText = 'track scrobbles request';
+    trackInfoDd.innerText = 'track info request';
 }
 
 function getTracksInfo() {
@@ -100,9 +102,7 @@ function getTracksInfo() {
         xhr.responseType = "json";
         xhr.open("GET", url, true);
         xhr.onloadend = function () {
-            //console.log(trackDiv);
             console.log(this.response);
-
             if (this.response.error !== undefined) {
                 trackDl.querySelector('dd.track-info').innerHTML = 'track info error: ' + this.response.message;
             } else {
@@ -111,7 +111,51 @@ function getTracksInfo() {
                     trackDl.querySelector('dd.track-info').innerHTML += ';&nbsp;<font color="cyan">&hearts;</font> loved track';
                 }
             }
+        };
+        xhr.send();
+    });
+}
 
+function getTracksScrobbles() {
+    document.querySelectorAll('dl.track-scrobbles-info').forEach(function (trackDl) {
+        var url =
+            'https://ws.audioscrobbler.com/2.0/?method=user.getTrackScrobbles'
+            + '&user=' + lastfmNickname
+            + '&api_key=' + lastfmAPIKey
+            + '&artist=' + encodeURIComponent(trackDl.dataset.artist).replace(/%20/g, '+')
+            + '&track=' + encodeURIComponent(trackDl.dataset.track).replace(/%20/g, '+')
+            + '&format=json'
+        ;
+        console.log(url);
+
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "json";
+        xhr.open("GET", url, true);
+        xhr.onloadend = function () {
+            var date_uts, track_date, track_date_time, track_date_only, track_time_only;
+            console.log(this.response);
+            if (this.response.error !== undefined) {
+                trackDl.querySelector('dd.track-scrobbles').innerHTML = 'track scrobbles error: ' + this.response.message;
+            } else {
+                var scResHTML = '';
+                if (this.response.trackscrobbles.track[0] !== undefined) {
+                    var t = 0;
+                    for (t in this.response.trackscrobbles.track) {
+                        date_uts = parseInt(this.response.trackscrobbles.track[t].date.uts) * 1000;
+                        track_date = new Date(date_uts);
+                        track_date_time = track_date.toLocaleString("sv-SE");
+                        track_date_only = track_date_time.slice(0, 10);
+                        track_time_only = track_date_time.slice(-9);
+                        scResHTML += (scResHTML == '' ? '' : "<br/>")
+                            + '<a class="yt-simple-endpoint yt-formatted-string" href="https://www.last.fm/user/' + lastfmNickname + '/library?&rangetype=1day&from=' + track_date_only + '" target="_blank"> ' + track_date_only + '</a>' + track_time_only
+                            + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '')
+                        ;
+                    }
+                } else {
+                    scResHTML = 'not scrobbled';
+                }
+                trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
+            }
         };
         xhr.send();
     });
