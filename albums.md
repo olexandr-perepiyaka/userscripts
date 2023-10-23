@@ -23,9 +23,6 @@
 
 ## released
 
-**[The Horrors](https://www.last.fm/music/The+Horrors) 2017-09-22 [Luminous](https://music.youtube.com/playlist?list=OLAK5uy_mKI0b2evvk79XY_IY8V52CpPhO8kC6wos)** 10tracks 51min  
-*garage rock, indie, horror punk, british*
-
 **[Police des moeurs](https://www.last.fm/music/Police+des+moeurs) 2020-04-03 [Péril](https://music.youtube.com/playlist?list=OLAK5uy_lKHDajEsBAnPk0swN6hKiXuvsTAPSzBWU)** 14tracks 36min  
 *minimal synth, minimal wave, coldwave, new wave, synthpop*
 
