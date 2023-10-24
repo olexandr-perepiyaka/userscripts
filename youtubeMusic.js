@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.4
+// @version      1.0
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -21,6 +21,7 @@ const lastfmAPIKey = 'a088b0c423e72ee735fd4b1e592341b4';
 
 function main() {
     var trackStr, artistStr;
+    var artistsArr = [];
 
     var ytmusicPlaylistTracks = document.getElementById('browse-page').querySelectorAll('ytmusic-responsive-list-item-renderer.style-scope.ytmusic-playlist-shelf-renderer');
 
@@ -56,6 +57,15 @@ function main() {
         getTrackInfo(trackDl);
         getTrackScrobbles(trackDl);
     });
+
+    document.querySelectorAll('dl.artist').forEach(function (artistDl) {
+        if (artistsArr.indexOf(artistDl.dataset.artist) < 0) {
+            artistsArr.push(artistDl.dataset.artist);
+            getArtistInfo(artistDl.dataset.artist);
+        }
+    });
+
+    console.log('artistsArr', artistsArr);
 }
 
 function createScrobbleDiv(trackDiv, trackStr, artistStr) {
@@ -74,6 +84,7 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         trackDl.onclick = function() {
             getTrackInfo(this);
             getTrackScrobbles(this);
+            getArtistInfo(this.dataset.artist);
         };
         lasfmInfoDiv.appendChild(trackDl);
 
@@ -91,6 +102,7 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         trackInfoDd.style.marginInlineStart = '20px';
         trackDl.appendChild(trackInfoDd);
 
+        console.log('artistStr', artistStr);
         var mainArtistDl = createArtistInfoDl(artistStr);
         lasfmInfoDiv.appendChild(mainArtistDl);
 
@@ -100,47 +112,57 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         }
 
         var featArtist = /\(feat. (.*?)\)/.exec(trackStr);
-        if (featArtist) {
+        console.log('featArtist', featArtist);
+        if (featArtist && featArtist[1]) {
+            console.log('featArtist[1]', featArtist[1]);
             var featArtistDl = createArtistInfoDl(featArtist[1]);
             lasfmInfoDiv.appendChild(featArtistDl);
-        }
 
-        if(/&/.exec(featArtist)) {
-            artistsToSplit += (artistsToSplit ? ', ' : '') + featArtist[1];
+            if(/&/.exec(featArtist[1])) {
+                artistsToSplit += (artistsToSplit ? ', ' : '') + featArtist[1];
+            }
         }
 
         var artistsToSplitAfterReplace = artistsToSplit.replace(/ & /g, ', ').replace(/[,,]+/g, ',');
-        var splittedArtist = artistsToSplitAfterReplace.split(', ');
 
-        for (var j = 0; j < splittedArtist.length; j++) {
-            if (splittedArtist[j] != artistStr) {
-                var splitArtistDl = createArtistInfoDl(splittedArtist[j]);
-                lasfmInfoDiv.appendChild(splitArtistDl);
+        if (artistsToSplitAfterReplace != '') {
+            var splittedArtist = artistsToSplitAfterReplace.split(', ');
+
+            for (var j = 0; j < splittedArtist.length; j++) {
+                if (splittedArtist[j] != artistStr) {
+                    console.log('splittedArtist[j]', splittedArtist[j]);
+                    var splitArtistDl = createArtistInfoDl(splittedArtist[j]);
+                    lasfmInfoDiv.appendChild(splitArtistDl);
+                }
             }
         }
     }
 }
 
 function createArtistInfoDl(artist) {
-    var artistDl, artistInfoDd, artistDt;
-    artistDl = document.createElement('dl');
+    var artistDl = document.createElement('dl');
     artistDl.className = 'artist';
     artistDl.dataset.artist = artist;
 
-    artistDt = document.createElement('dt');
+    var artistDt = document.createElement('dt');
     artistDt.innerText = artist;
     artistDl.appendChild(artistDt);
 
-    artistInfoDd = document.createElement('dd');
-    artistInfoDd.className = 'artist-info';
-    artistInfoDd.style.marginInlineStart = '20px';
-    artistDl.appendChild(artistInfoDd);
+    var artistDd = document.createElement('dd');
+    artistDd.className = 'artist-tags';
+    artistDd.style.marginInlineStart = '20px';
+    artistDl.appendChild(artistDd);
+
+    artistDd = document.createElement('dd');
+    artistDd.className = 'artist-userplaycount';
+    artistDd.style.marginInlineStart = '20px';
+    artistDl.appendChild(artistDd);
 
     return artistDl;
 }
 
 function getTrackInfo(trackDl) {
-    trackDl.querySelector('dd.track-info').innerHTML = 'track info request';
+    trackDl.querySelector('dd.track-info').innerHTML = '';
     var url =
         'https://ws.audioscrobbler.com/2.0/?method=track.getInfo'
         + '&user=' + lastfmNickname
@@ -155,7 +177,7 @@ function getTrackInfo(trackDl) {
     xhr.responseType = "json";
     xhr.open("GET", url, true);
     xhr.onloadend = function () {
-        console.log(this.response);
+        //console.log(this.response);
         if (this.response.error !== undefined) {
             trackDl.querySelector('dd.track-info').innerHTML = 'track info error: ' + this.response.message;
         } else {
@@ -166,9 +188,6 @@ function getTrackInfo(trackDl) {
                 trackDl.querySelector('dd.track-info').innerHTML = '';
             }
         }
-    };
-    xhr.onerror = function (event) {
-        trackDl.querySelector('dd.track-info').innerHTML = JSON.stringify(event);
     };
     xhr.send();
 }
@@ -190,7 +209,7 @@ function getTrackScrobbles(trackDl) {
     xhr.open("GET", url, true);
     xhr.onloadend = function () {
         var date_uts, track_date, track_date_time, track_date_only, track_time_only;
-        console.log(this.response);
+        //console.log(this.response);
         if (this.response.error !== undefined) {
             trackDl.querySelector('dd.track-scrobbles').innerHTML = 'track scrobbles error: ' + this.response.message;
         } else {
@@ -219,9 +238,56 @@ function getTrackScrobbles(trackDl) {
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
     };
-    xhr.onerror = function (event) {
-        trackDl.querySelector('dd.track-info').innerHTML = JSON.stringify(event);
-    };
+    xhr.send();
+}
+
+function getArtistInfo(artist) {
+    const url =
+        'https://ws.audioscrobbler.com/2.0/?method=artist.getInfo'
+        + '&artist=' + encodeURIComponent(artist).replace(/%20/g, '+')
+        + '&username=' + lastfmNickname
+        + '&api_key=' + lastfmAPIKey
+        + '&format=json'
+    ;
+    console.log(url);
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "json";
+    xhr.onloadend = function () {
+        //console.log(this.response);
+        var response = this.response;
+        document.querySelectorAll('dl.artist[data-artist="' + artist +'"]').forEach(function (artistDl) {
+            var el;
+            if (response.error === undefined) {
+                artistDl.querySelector('dd.artist-tags').innerText = '';
+                artistDl.querySelector('dd.artist-userplaycount').innerText = '';
+                el = document.createElement("a");
+                el.className = "yt-simple-endpoint yt-formatted-string";
+                el.target = '_blank';
+                el.href = response.artist.url;
+                el.textContent = response.artist.name;
+                artistDl.querySelector('dt').textContent = '';
+                artistDl.querySelector('dt').appendChild(el);
+
+                if (response.artist.tags.tag.length > 0) {
+                    for (var t in response.artist.tags.tag) {
+                        artistDl.querySelector('dd.artist-tags').innerText += (artistDl.querySelector('dd.artist-tags').innerText == '' ? '' : ', ') + response.artist.tags.tag[t].name.toLowerCase();
+                    }
+                }
+
+                if (parseInt(response.artist.stats.userplaycount) > 0) {
+                    el = document.createElement("a");
+                    el.className = "yt-simple-endpoint yt-formatted-string";
+                    el.target = '_blank';
+                    el.textContent = response.artist.stats.userplaycount + ' userplaycount(s)';
+                    el.href = 'https://www.last.fm/user/' + lastfmNickname + '/library/music/' + encodeURIComponent(response.artist.name).replace(/%20/g, '+');
+                    artistDl.querySelector('dd.artist-userplaycount').appendChild(el);
+                }
+            } else {
+                artistDl.querySelector('dd.artist-tags').innerText = 'error ' + response.error + ' - ' + response.message;
+            }
+        });
+    }
     xhr.send();
 }
 
