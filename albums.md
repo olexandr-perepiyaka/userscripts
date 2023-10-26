@@ -23,9 +23,6 @@
 
 ## released
 
-**[Police des moeurs](https://www.last.fm/music/Police+des+moeurs) 2020-04-03 [Péril](https://music.youtube.com/playlist?list=OLAK5uy_lKHDajEsBAnPk0swN6hKiXuvsTAPSzBWU)** 14tracks 36min  
-*minimal synth, minimal wave, coldwave, new wave, synthpop*
-
 **[Ashbury Heights](https://www.last.fm/music/Ashbury+Heights) 2015-07-24 [The Looking Glass Society](https://music.youtube.com/playlist?list=OLAK5uy_ndM2AZtRfBU_3K2qusFyUc1LUS6TAqhR4)** 12tracks 55min  
 *synthpop, futurepop, electronic, swedish, electro*
 
