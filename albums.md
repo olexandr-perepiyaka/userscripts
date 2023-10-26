@@ -23,9 +23,6 @@
 
 ## released
 
-**[Ashbury Heights](https://www.last.fm/music/Ashbury+Heights) 2015-07-24 [The Looking Glass Society](https://music.youtube.com/playlist?list=OLAK5uy_ndM2AZtRfBU_3K2qusFyUc1LUS6TAqhR4)** 12tracks 55min  
-*synthpop, futurepop, electronic, swedish, electro*
-
 **[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2020-11-20 [9 Songs About Love](https://music.youtube.com/playlist?list=OLAK5uy_nip9Nc9qhITacWV19lKqTdJPLkzw8bkk0)** 9tracks 34min  
 *folk, indie pop, singer-songwriter*
 
