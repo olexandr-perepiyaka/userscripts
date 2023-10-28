@@ -56,7 +56,7 @@
 **[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
 *indie pop, pop, seen live, british, electronic*
 
-**[Duran Duran](https://www.last.fm/music/Duran+Duran) 2023-10-27 [DANSE MACABRE](https://music.youtube.com/playlist?list=OLAK5uy_n7Q1BzIdx7V_xvEQgpIVJZzWeLa00peoI)** 2tracks 24min  
+**[Duran Duran](https://www.last.fm/music/Duran+Duran) 2023-10-27 [DANSE MACABRE](https://music.youtube.com/playlist?list=OLAK5uy_n7Q1BzIdx7V_xvEQgpIVJZzWeLa00peoI)** 13tracks 50min  
 *new wave, 80s, pop, synth pop, rock*
 <!--
 
