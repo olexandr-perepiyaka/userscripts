@@ -59,7 +59,7 @@
 **[Duran Duran](https://www.last.fm/music/Duran+Duran) 2023-10-27 [DANSE MACABRE](https://music.youtube.com/playlist?list=OLAK5uy_n7Q1BzIdx7V_xvEQgpIVJZzWeLa00peoI)** 13tracks 50min  
 *new wave, 80s, pop, synth pop, rock*
 
-**[Hand Model](https://www.last.fm/music/Hand+Model) 2023 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min
+**[Hand Model](https://www.last.fm/music/Hand+Model) 2023 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
 *electronic, experimental*
 
 <!--
