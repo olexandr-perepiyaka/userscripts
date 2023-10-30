@@ -1,8 +1,5 @@
 ## not released yet
 
-**[King Gizzard & The Lizard Wizard](https://www.last.fm/music/King+Gizzard+&+The+Lizard+Wizard) 2023-10-27 [The Silver Cord](https://music.youtube.com/search?q=King+Gizzard+%26+The+Lizard+Wizard+The+Silver+Cord)** 14tracks <a href="https://kinggizzard.bandcamp.com/album/the-silver-cord" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
-*psychedelic rock, garage rock, psychedelic, australian*
-
 **[Cold War Kids](https://www.last.fm/music/Cold+War+Kids) 2023-11-03 [Cold War Kids](https://music.youtube.com/search?q=Cold+War+Kids "youtube music search")**  
 *indie, indie rock, alternative, rock*
 
