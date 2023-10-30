@@ -53,25 +53,25 @@
 **[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
 *indie pop, pop, seen live, british, electronic*
 
-**[Hand Model](https://www.last.fm/music/Hand+Model) 2023 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
+**[Hand Model](https://www.last.fm/music/Hand+Model) 2023-05-26 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
 *electronic, experimental*
 
-**[James Bay](https://www.last.fm/music/James+Bay) 2022 [Leap (Deluxe Edition)](https://music.youtube.com/playlist?list=OLAK5uy_n1JXWbb_ISlm5adeyV0fUoqaO1qwv4VBY)** 16tracks 57min  
+**[James Bay](https://www.last.fm/music/James+Bay) 2022-07-12 [Leap (Deluxe Edition)](https://music.youtube.com/playlist?list=OLAK5uy_n1JXWbb_ISlm5adeyV0fUoqaO1qwv4VBY)** 16tracks 57min  
 *folk, indie, singer-songwriter, british, seen live*
 
-**[julie](https://www.last.fm/music/Julie) 2021 [pushing daisies](https://music.youtube.com/playlist?list=OLAK5uy_mDLFKU-IzBfbcL8C4mgKVcD4tVyM8ap5o)** 6tracks 12min, 37 seconds  
+**[julie](https://www.last.fm/music/Julie) 2021-08-12 [pushing daisies](https://music.youtube.com/playlist?list=OLAK5uy_mDLFKU-IzBfbcL8C4mgKVcD4tVyM8ap5o)** 6tracks 12min, 37 seconds  
 *shoegaze, danish, pop, noise pop, seen live*
 
-**[Taylor Swift](https://www.last.fm/music/Taylor+Swift) 2023 [1989 (Taylor's Version) (Deluxe)](https://music.youtube.com/playlist?list=OLAK5uy_lvlz2hg23jGszL0Jaa9Wy9TE_XNnfMijM)** 22tracks 1 hour, 21min  
+**[Taylor Swift](https://www.last.fm/music/Taylor+Swift) 2023-10-27 [1989 (Taylor's Version) (Deluxe)](https://music.youtube.com/playlist?list=OLAK5uy_lvlz2hg23jGszL0Jaa9Wy9TE_XNnfMijM)** 22tracks 1 hour, 21min  
 *country, pop, female vocalists, singer-songwriter, acoustic*
 
-**[James Blunt](https://www.last.fm/music/James+Blunt) 2023 [Who We Used To Be (Deluxe)](https://music.youtube.com/playlist?list=OLAK5uy_lESZY5LFxVrn512GKULFJxEBeAYHYgHS8)** 14tracks 43min  
+**[James Blunt](https://www.last.fm/music/James+Blunt) 2023-10-27 [Who We Used To Be (Deluxe)](https://music.youtube.com/playlist?list=OLAK5uy_lESZY5LFxVrn512GKULFJxEBeAYHYgHS8)** 14tracks 43min  
 *pop, singer-songwriter, acoustic, indie, rock*
 
-**[The Mars Volta](https://www.last.fm/music/The+Mars+Volta) 2022 [The Mars Volta](https://music.youtube.com/playlist?list=OLAK5uy_ncbCslBt2f30u96B0k7Pi0rmylwqmi0_U)** 14tracks 44min  
+**[The Mars Volta](https://www.last.fm/music/The+Mars+Volta) 2022-09-16 [The Mars Volta](https://music.youtube.com/playlist?list=OLAK5uy_ncbCslBt2f30u96B0k7Pi0rmylwqmi0_U)** 14tracks 44min  
 *progressive rock, experimental, rock, seen live, alternative*
 
-**[Midwife & Vyva Melinkolya](https://www.last.fm/music/Midwife+&+Vyva+Melinkolya) 2023 [Orbweaving](https://music.youtube.com/playlist?list=OLAK5uy_lrp8cvzlgN9AVCwsKAQzQvNuUhaymLdyE)** 5tracks 32min  
+**[Midwife & Vyva Melinkolya](https://www.last.fm/music/Midwife+&+Vyva+Melinkolya) 2023-05-12 [Orbweaving](https://music.youtube.com/playlist?list=OLAK5uy_lrp8cvzlgN9AVCwsKAQzQvNuUhaymLdyE)** 5tracks 32min  
 *shoegaze, electronic, vocal, pop, ambient*
 
 
