@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -80,12 +80,6 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         trackDl.className = 'track-scrobbles-info';
         trackDl.dataset.track = trackStr;
         trackDl.dataset.artist = artistStr;
-        trackDl.style.cursor = 'pointer';
-        trackDl.onclick = function() {
-            getTrackInfo(this);
-            getTrackScrobbles(this);
-            getArtistInfo(this.dataset.artist);
-        };
         lasfmInfoDiv.appendChild(trackDl);
 
         var trackArtistDt = document.createElement('dt');
@@ -95,6 +89,12 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         var trackScroblesDd = document.createElement('dd');
         trackScroblesDd.className = 'track-scrobbles';
         trackScroblesDd.style.marginInlineStart = '20px';
+        trackScroblesDd.style.cursor = 'pointer';
+        trackScroblesDd.onclick = function() {
+            getTrackInfo(trackDl);
+            getTrackScrobbles(trackDl);
+            getArtistInfo(trackDl.dataset.artist);
+        };
         trackDl.appendChild(trackScroblesDd);
 
         trackInfoDd = document.createElement('dd');
@@ -162,7 +162,8 @@ function createArtistInfoDl(artist) {
 }
 
 function getTrackInfo(trackDl) {
-    trackDl.querySelector('dd.track-info').innerHTML = '';
+    trackDl.querySelector('dd.track-info').innerHTML = (trackDl.querySelector('dd.track-info').innerHTML == '' ? '' : '&orarr;&nbsp;' + trackDl.querySelector('dd.track-info').innerHTML);
+
     var url =
         'https://ws.audioscrobbler.com/2.0/?method=track.getInfo'
         + '&user=' + lastfmNickname
@@ -193,7 +194,7 @@ function getTrackInfo(trackDl) {
 }
 
 function getTrackScrobbles(trackDl) {
-    trackDl.querySelector('dd.track-scrobbles').innerHTML = 'track scrobbles request';
+    trackDl.querySelector('dd.track-scrobbles').innerHTML = '&orarr;&nbsp;' + trackDl.querySelector('dd.track-scrobbles').innerHTML;
     var url =
         'https://ws.audioscrobbler.com/2.0/?method=user.getTrackScrobbles'
         + '&user=' + lastfmNickname
@@ -233,7 +234,7 @@ function getTrackScrobbles(trackDl) {
                     ;
                 }
             } else {
-                scResHTML = 'not scrobbled';
+                scResHTML = '<font color="cyan">not scrobbled</font>';
             }
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
@@ -242,6 +243,11 @@ function getTrackScrobbles(trackDl) {
 }
 
 function getArtistInfo(artist) {
+    document.querySelectorAll('dl.artist[data-artist="' + artist +'"]').forEach(function (artistDl) {
+        artistDl.querySelector('dd.artist-tags').innerHTML = artistDl.querySelector('dd.artist-tags').innerHTML == '' ? '' : '&orarr;&nbsp;' + artistDl.querySelector('dd.artist-tags').innerHTML;
+        artistDl.querySelector('dd.artist-userplaycount').innerHTML = artistDl.querySelector('dd.artist-userplaycount').innerHTML == '' ? '' : '&orarr;&nbsp;' + artistDl.querySelector('dd.artist-userplaycount').innerHTML;
+    });
+
     const url =
         'https://ws.audioscrobbler.com/2.0/?method=artist.getInfo'
         + '&artist=' + encodeURIComponent(artist).replace(/%20/g, '+')
