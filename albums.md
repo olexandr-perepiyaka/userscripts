@@ -35,22 +35,22 @@
 **[Vanishing Twin](https://www.last.fm/music/Vanishing+Twin) 2019-06-07 [The Age of Immunology](https://music.youtube.com/playlist?list=OLAK5uy_l4K-Kcs8McNGYA93jDEPoMKoF2QSJqug4)** 10tracks 45min  
 *psychedelic pop, psychedelic, art pop, british, experimental*
 
-**[Musumeci](https://www.last.fm/music/Musumeci) 2019 [Arcade](https://music.youtube.com/playlist?list=OLAK5uy_nBnGlvAkDWpG1o610dp6ruotYYl2zeqMs)** 7tracks 42min  
+**[Musumeci](https://www.last.fm/music/Musumeci) 2019-09-27 [Arcade](https://music.youtube.com/playlist?list=OLAK5uy_nBnGlvAkDWpG1o610dp6ruotYYl2zeqMs)** 7tracks 42min  
 *minimal wave, minimal electronic, deep house, 80's, italian synthwave*
 
-**[Nico Fidenco](https://www.last.fm/music/Nico+Fidenco) 2013 [Porno Holocaust (Original Motion Picture Soundtrack)](https://music.youtube.com/playlist?list=OLAK5uy_llL7OcZbaZc08hGxkvTRK_s6KHLB_W9N4)** 18tracks 59min  
+**[Nico Fidenco](https://www.last.fm/music/Nico+Fidenco) 2013-04-17 [Porno Holocaust (Original Motion Picture Soundtrack)](https://music.youtube.com/playlist?list=OLAK5uy_llL7OcZbaZc08hGxkvTRK_s6KHLB_W9N4)** 18tracks 59min  
 *italian, Soundtrack, singer-songwriter, composer, italiana*
 
-**[Carmody](https://www.last.fm/music/Carmody) 2009 [A Better Spider 1981-1985](https://music.youtube.com/playlist?list=OLAK5uy_lhdraz2pBNoKF0xlc7FCrIHU29MFO4TCQ)** 14tracks 59min  
+**[Carmody](https://www.last.fm/music/Carmody) 2009-03-15 [A Better Spider 1981-1985](https://music.youtube.com/playlist?list=OLAK5uy_lhdraz2pBNoKF0xlc7FCrIHU29MFO4TCQ)** 14tracks 59min  
 *new wave, synthpop, minimal synth, minimal wave, 80s*
 
 **[Blink-182](https://www.last.fm/music/Blink-182) 2023-10-20 [ONE MORE TIME...](https://music.youtube.com/playlist?list=OLAK5uy_neiPT9ouRfPvntVqQcJOV_BGf2VaIj_s4)** 17tracks 44min  
 *punk rock, pop punk, punk, rock, alternative*
 
-**[Grapetooth](https://www.last.fm/music/Grapetooth) 2018 [Grapetooth](https://music.youtube.com/playlist?list=OLAK5uy_mL3RwtQQ3vni1h9ameDtYARgHseVCaJK0)** 10tracks 39min  
+**[Grapetooth](https://www.last.fm/music/Grapetooth) 2018-11-09 [Grapetooth](https://music.youtube.com/playlist?list=OLAK5uy_mL3RwtQQ3vni1h9ameDtYARgHseVCaJK0)** 10tracks 39min  
 *indie pop, indie, indie rock, usa, new wave*
 
-**[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
+**[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023-10-13 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
 *indie pop, pop, seen live, british, electronic*
 
 **[Hand Model](https://www.last.fm/music/Hand+Model) 2023-05-26 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
