@@ -59,9 +59,6 @@
 **[julie](https://www.last.fm/music/Julie) 2021-08-12 [pushing daisies](https://music.youtube.com/playlist?list=OLAK5uy_mDLFKU-IzBfbcL8C4mgKVcD4tVyM8ap5o)** 6tracks 12min, 37 seconds  
 *shoegaze, danish, pop, noise pop, seen live*
 
-**[Taylor Swift](https://www.last.fm/music/Taylor+Swift) 2023-10-27 [1989 (Taylor's Version) (Deluxe)](https://music.youtube.com/playlist?list=OLAK5uy_lvlz2hg23jGszL0Jaa9Wy9TE_XNnfMijM)** 22tracks 1 hour, 21min  
-*country, pop, female vocalists, singer-songwriter, acoustic*
-
 **[The Mars Volta](https://www.last.fm/music/The+Mars+Volta) 2022-09-16 [The Mars Volta](https://music.youtube.com/playlist?list=OLAK5uy_ncbCslBt2f30u96B0k7Pi0rmylwqmi0_U)** 14tracks 44min  
 *progressive rock, experimental, rock, seen live, alternative*
 
