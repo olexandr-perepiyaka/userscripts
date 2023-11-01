@@ -20,9 +20,6 @@
 
 ## released
 
-**[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2020-11-20 [9 Songs About Love](https://music.youtube.com/playlist?list=OLAK5uy_nip9Nc9qhITacWV19lKqTdJPLkzw8bkk0)** 9tracks 34min  
-*folk, indie pop, singer-songwriter*
-
 **[Boris](https://www.last.fm/music/Boris "drone, stoner rock, experimental, sludge, doom metal") & [Merzbow](https://www.last.fm/music/Merzbow "noise, experimental, industrial, Japanoise, japanese") 2023-10-03 [04092001](https://music.youtube.com/playlist?list=OLAK5uy_kohgK4-QXQQfGLL3Q-ktwp7xW1zGYA9kI)** 7tracks 32min  
 *drone, stoner rock, experimental, sludge, doom metal, noise, industrial, japanoise, japanese*
 
@@ -73,6 +70,10 @@
 
 **[torr](https://www.last.fm/music/+noredirect/torr) 2023-07-28 [molecule](https://music.youtube.com/playlist?list=OLAK5uy_ly5qi-lJRfojYHLNGiHqr_ncP_zPG60IA)** 10tracks 26min  
 *thrash metal, black metal, seen live, thrash-black metal, hyperpop*
+
+**[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2017-03-03 [Now I Feel Adored](https://music.youtube.com/playlist?list=OLAK5uy_kthAE600XWklcJXebaim4dr5XGkcaxyLA)** 12tracks 38min
+*minnesota, folk, indie pop, singer-songwriter, seen live*
+
 <!--
 
 **[ARTIST](https://www.last.fm/music/) DATE [ALBUM](https://music.youtube.com/playlist?list=)** Ntracks Nmin  
