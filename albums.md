@@ -20,9 +20,6 @@
 
 ## released
 
-**[Boris](https://www.last.fm/music/Boris "drone, stoner rock, experimental, sludge, doom metal") & [Merzbow](https://www.last.fm/music/Merzbow "noise, experimental, industrial, Japanoise, japanese") 2023-10-03 [04092001](https://music.youtube.com/playlist?list=OLAK5uy_kohgK4-QXQQfGLL3Q-ktwp7xW1zGYA9kI)** 7tracks 32min  
-*drone, stoner rock, experimental, sludge, doom metal, noise, industrial, japanoise, japanese*
-
 **[Hot Glue](https://hotgluetheband.bandcamp.com/) 2023-08-31 [Hatchet](https://music.youtube.com/playlist?list=OLAK5uy_lPMfxm5BSIAQwueTBhPR79ESJ7wm03xFU)** 10tracks 36min <a href="https://hotgluetheband.bandcamp.com/album/hatchet" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
 *alternative alternativerock indierock poprock*
 
