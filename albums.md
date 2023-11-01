@@ -74,7 +74,7 @@
 **[†††](https://www.last.fm/music/+noredirect/%E2%80%A0%E2%80%A0%E2%80%A0+(Crosses)) 2023-10-27 [Goodnight, God Bless, I Love U, Delete.](https://music.youtube.com/playlist?list=OLAK5uy_mChDiU0-W2IZxuKLSe_5yuZTAa33soSVA)** 15tracks 49min  
 *electronic, alternative, experimental, ambient, deftones*
 
-**[torr](https://www.last.fm/music/+noredirect/torr) 2023 [molecule](https://music.youtube.com/playlist?list=OLAK5uy_ly5qi-lJRfojYHLNGiHqr_ncP_zPG60IA)** 10tracks 26min  
+**[torr](https://www.last.fm/music/+noredirect/torr) 2023-07-28 [molecule](https://music.youtube.com/playlist?list=OLAK5uy_ly5qi-lJRfojYHLNGiHqr_ncP_zPG60IA)** 10tracks 26min  
 *thrash metal, black metal, seen live, thrash-black metal, hyperpop*
 <!--
 
