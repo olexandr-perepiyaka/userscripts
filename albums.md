@@ -71,6 +71,9 @@
 **[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2017-03-03 [Now I Feel Adored](https://music.youtube.com/playlist?list=OLAK5uy_kthAE600XWklcJXebaim4dr5XGkcaxyLA)** 12tracks 38min
 *minnesota, folk, indie pop, singer-songwriter, seen live*
 
+**[Julia Jacklin](https://www.last.fm/music/Julia+Jacklin) 2019-02-22 [Crushing](https://music.youtube.com/playlist?list=OLAK5uy_lgwsTsBI_Iv9GTKhLZyWrlkpmYGeN62dQ)** 10tracks 39min  
+*seen live, singer-songwriter, folk, indie, indie folk*
+
 <!--
 
 **[ARTIST](https://www.last.fm/music/) DATE [ALBUM](https://music.youtube.com/playlist?list=)** Ntracks Nmin  
