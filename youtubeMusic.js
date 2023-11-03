@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.1.0
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -66,6 +66,8 @@ function main() {
     });
 
     console.log('artistsArr', artistsArr);
+
+    getAlbumData();
 }
 
 function createScrobbleDiv(trackDiv, trackStr, artistStr) {
@@ -293,6 +295,60 @@ function getArtistInfo(artist) {
                 artistDl.querySelector('dd.artist-tags').innerText = 'error ' + response.error + ' - ' + response.message;
             }
         });
+    }
+    xhr.send();
+}
+
+function getAlbumData() {
+    document.querySelector('div.metadata').querySelector('#description').style.webkitLineClamp = '20';
+    document.querySelector('div.metadata').querySelector('#description').style.maxHeight = 'fit-content';
+    document.querySelector('div.metadata').querySelector('#description').contentEditable = true;
+
+    var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
+    var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
+
+    const artist = artistYearArr[1];
+    const year = artistYearArr[2];
+    const title = albumDetailsArr[0].innerText;
+    document.title = artist + ' - ' + title + ' (' + year + ')';
+
+    const tracksMins = albumDetailsArr[2].innerText.replace(" songs •", "tracks").replace(" hour", "h").replace(" minutes", "min").replace(" seconds", "sec");
+
+    const url =
+        'https://ws.audioscrobbler.com/2.0/?method=artist.getInfo'
+        + '&artist=' + encodeURIComponent(artist).replace(/%20/g, '+')
+        + '&username=' + lastfmNickname
+        + '&api_key=' + lastfmAPIKey
+        + '&format=json'
+    ;
+    console.log(url);
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "json";
+    xhr.onloadend = function () {
+        var resultStr;
+        if (this.response.error === undefined) {
+            resultStr =
+                "**"
+                + "[" + artist + '](' + this.response.artist.url + ') '
+                + year
+                + " [" + title + "]"
+                + "(" + document.location.href + ")**  " + tracksMins
+            ;
+            console.log(this.response.artist.url);
+            var tags = '';
+            if (this.response.artist.tags.tag.length > 0) {
+                for (var t in this.response.artist.tags.tag) {
+                    tags += (tags == '' ? '' : ', ') + this.response.artist.tags.tag[t].name.toLowerCase();
+                }
+            }
+            console.log(tags);
+            resultStr += "  \n*" + tags + "*\n";
+        } else {
+            console.log('this.response.error', this.response.error);
+            resultStr = this.response.error;
+        }
+        document.querySelector('div.metadata').querySelector('#description').innerText = resultStr + "\n" + document.querySelector('div.metadata').querySelector('#description').innerText;
     }
     xhr.send();
 }
