@@ -8,6 +8,3 @@
 
 **[Nazva](https://www.last.fm/music/NAZVA) 2023 [ГУРМА](https://music.youtube.com/playlist?list=OLAK5uy_mrhbyC0RuOyylSo5J4k2MNiadF8dvxPNc)** 16tracks • 26min  
 *ukrainian, folk, folk rock, folk pop*
-
-**[Renie Cares](https://www.last.fm/music/renie+cares) 2023-11-03 [легка нестерпність буття](https://music.youtube.com/playlist?list=OLAK5uy_mQgcg_tYcz5awwfV6gKpy31Euz9aV06tU)** 12tracks 41min  
-*electropop, ukrainian, indie pop, indie rock, synth pop*
