@@ -1,8 +1,5 @@
 ## not released yet
 
-**[Cold War Kids](https://www.last.fm/music/Cold+War+Kids) 2023-11-03 [Cold War Kids](https://music.youtube.com/search?q=Cold+War+Kids "youtube music search")**  
-*indie, indie rock, alternative, rock*
-
 **[Kurt Vile](https://www.last.fm/music/Kurt+Vile) 2023-11-17 [Another Good Year For The Roses](https://music.youtube.com/search?q=Kurt+Vile+Another+good+year+for+the+roses)**  
 *lo-fi, psychedelic, indie, bedroom pop*
 
