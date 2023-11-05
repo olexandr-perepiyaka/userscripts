@@ -71,5 +71,5 @@
 **[Julia Jacklin](https://www.last.fm/music/Julia+Jacklin) 2019-02-22 [Crushing](https://music.youtube.com/playlist?list=OLAK5uy_lgwsTsBI_Iv9GTKhLZyWrlkpmYGeN62dQ)** 10tracks 39min  
 *seen live, singer-songwriter, folk, indie, indie folk*
 
-**[Eyedress](https://www.last.fm/music/Eyedress) 2022-08-26 [FULL TIME LOVER](https://music.youtube.com/playlist?list=OLAK5uy_lHdEVhwYksdhjR4ZqdrmQ4XQxopw-0QYk)** 28tracks 1h, 11min
+**[Eyedress](https://www.last.fm/music/Eyedress) 2022-08-26 [FULL TIME LOVER](https://music.youtube.com/playlist?list=OLAK5uy_lHdEVhwYksdhjR4ZqdrmQ4XQxopw-0QYk)** 28tracks 1h, 11min  
 *electronic, experimental, indie, psychedelic, lo-fi*
