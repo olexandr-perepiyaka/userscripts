@@ -16,3 +16,8 @@
 **[Nazva](https://www.last.fm/music/NAZVA) - [ГУРМА](https://music.youtube.com/playlist?list=OLAK5uy_mrhbyC0RuOyylSo5J4k2MNiadF8dvxPNc)**  
 16tracks 26min  
 *ukrainian, folk, folk rock, folk pop*
+
+**2022-06-03**  
+**[morgendie](https://www.last.fm/music/morgendie) - [секретний сад](https://music.youtube.com/playlist?list=OLAK5uy_ku4OuqbZ-BK-3rZ0Qgqo0UDtTlIZKcojU)**  
+12tracks 42min  
+*ukrainian, darkwave, indie, indie pop, electronic*
