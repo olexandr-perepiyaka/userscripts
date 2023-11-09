@@ -17,9 +17,6 @@
 
 ## released
 
-**[Hot Glue](https://hotgluetheband.bandcamp.com/) 2023-08-31 [Hatchet](https://music.youtube.com/playlist?list=OLAK5uy_lPMfxm5BSIAQwueTBhPR79ESJ7wm03xFU)** 10tracks 36min <a href="https://hotgluetheband.bandcamp.com/album/hatchet" title="bandcamp"><img src="https://s4.bcbits.com/img/favicon/apple-touch-icon.png" width="16" height="16"></a>  
-*alternative alternativerock indierock poprock*
-
 **[The Kilimanjaro Darkjazz Ensemble](https://www.last.fm/music/The+Kilimanjaro+Darkjazz+Ensemble) 2009-03-11 [Here Be Dragons](https://music.youtube.com/playlist?list=OLAK5uy_meD93DsxRj5LE1SfKAjj3rc9FYoKrfrxM)** 9tracks 55min  
 *dark jazz, jazz, experimental, ambient, electronic*
 
