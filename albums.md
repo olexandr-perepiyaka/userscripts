@@ -17,9 +17,6 @@
 
 ## released
 
-**[The Kilimanjaro Darkjazz Ensemble](https://www.last.fm/music/The+Kilimanjaro+Darkjazz+Ensemble) 2009-03-11 [Here Be Dragons](https://music.youtube.com/playlist?list=OLAK5uy_meD93DsxRj5LE1SfKAjj3rc9FYoKrfrxM)** 9tracks 55min  
-*dark jazz, jazz, experimental, ambient, electronic*
-
 **[Vanishing Twin](https://www.last.fm/music/Vanishing+Twin) 2019-06-07 [The Age of Immunology](https://music.youtube.com/playlist?list=OLAK5uy_l4K-Kcs8McNGYA93jDEPoMKoF2QSJqug4)** 10tracks 45min  
 *psychedelic pop, psychedelic, art pop, british, experimental*
 
