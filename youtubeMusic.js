@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.1.2
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -76,6 +76,7 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         var trackInfoDd, artistDl;
         var lasfmInfoDiv = document.createElement('dl');
         lasfmInfoDiv.className = 'lastfm-info';
+        lasfmInfoDiv.style.fontWeight = 'bold';
         trackDiv.insertAdjacentElement("afterend", lasfmInfoDiv);
 
         var trackDl = document.createElement('dl');
@@ -186,7 +187,7 @@ function getTrackInfo(trackDl) {
         } else {
             /*trackDl.querySelector('dd.track-info').innerHTML = this.response.track.userplaycount + ' playcount' + (this.response.track.userplaycount == 1 ? '' : 's');*/
             if (this.response.track.userloved == 1) {
-                trackDl.querySelector('dd.track-info').innerHTML = '<font color="cyan">&hearts;</font> loved track';
+                trackDl.querySelector('dd.track-info').innerHTML = '<font color="red">&hearts;</font> loved track';
             } else {
                 trackDl.querySelector('dd.track-info').innerHTML = '';
             }
@@ -236,7 +237,7 @@ function getTrackScrobbles(trackDl) {
                     ;
                 }
             } else {
-                scResHTML = '<font color="cyan">not scrobbled</font>';
+                scResHTML = '<font color="red">not scrobbled</font>';
             }
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
@@ -302,7 +303,17 @@ function getArtistInfo(artist) {
 function getAlbumData() {
     document.querySelector('div.metadata').querySelector('#description').style.webkitLineClamp = '20';
     document.querySelector('div.metadata').querySelector('#description').style.maxHeight = 'fit-content';
+    document.querySelector('div.metadata').querySelector('#description').style.maxWidth = 'fit-content';
     document.querySelector('div.metadata').querySelector('#description').contentEditable = true;
+
+    var descrFirstChild = document.querySelector('div.metadata').querySelector('#description').firstChild;
+    if (descrFirstChild.className != 'descr-pre') {
+        descrFirstChild = document.createElement('pre');
+        descrFirstChild.className = 'descr-pre';
+        document.querySelector('div.metadata').querySelector('#description').insertBefore(descrFirstChild, document.querySelector('div.metadata').querySelector('#description').firstChild);
+    } else {
+        descrFirstChild.innerText = '';
+    }
 
     var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
     var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
@@ -329,11 +340,10 @@ function getAlbumData() {
         var resultStr;
         if (this.response.error === undefined) {
             resultStr =
-                "**"
-                + "[" + artist + '](' + this.response.artist.url + ') '
-                + year
-                + " [" + title + "]"
-                + "(" + document.location.href + ")**  " + tracksMins
+                '**' + year + "**  \n"
+                + '**[' + artist + '](' + this.response.artist.url + ')'
+                + ' - [' + title + '](' + document.location.href + ")**  \n"
+                + tracksMins + "  \n"
             ;
             console.log(this.response.artist.url);
             var tags = '';
@@ -343,12 +353,12 @@ function getAlbumData() {
                 }
             }
             console.log(tags);
-            resultStr += "  \n*" + tags + "*\n";
+            resultStr += "*" + tags + "*\n";
         } else {
             console.log('this.response.error', this.response.error);
             resultStr = this.response.error;
         }
-        document.querySelector('div.metadata').querySelector('#description').innerText = resultStr + "\n" + document.querySelector('div.metadata').querySelector('#description').innerText;
+        document.querySelector('div.metadata').querySelector('#description').querySelector('.descr-pre').innerText = resultStr;
     }
     xhr.send();
 }
