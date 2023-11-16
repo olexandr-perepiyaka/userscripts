@@ -67,3 +67,8 @@
 
 **[Eyedress](https://www.last.fm/music/Eyedress) 2022-08-26 [FULL TIME LOVER](https://music.youtube.com/playlist?list=OLAK5uy_lHdEVhwYksdhjR4ZqdrmQ4XQxopw-0QYk)** 28tracks 1h, 11min  
 *electronic, experimental, indie, psychedelic, lo-fi*
+
+**2023-08-18**  
+**[Future Utopia](https://www.last.fm/music/Future+Utopia) - [We Were We Still Are](https://music.youtube.com/playlist?list=OLAK5uy_l36f9Tf3n2insmXOPgLjZBcd5VCBJOq3I)**  
+10tracks 33min  
+*indie, pop, rap, hip-hop, electronic*
