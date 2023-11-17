@@ -1,8 +1,5 @@
 ## not released yet
 
-**[Kurt Vile](https://www.last.fm/music/Kurt+Vile) 2023-11-17 [Another Good Year For The Roses](https://music.youtube.com/search?q=Kurt+Vile+Another+good+year+for+the+roses)**  
-*lo-fi, psychedelic, indie, bedroom pop*
-
 **[Jonathan Rado](https://www.last.fm/music/Jonathan+Rado) 2023-12-01 [For Who The Bell Tolls For](https://music.youtube.com/playlist?list=OLAK5uy_mRSndQ8vO9hkbQm8wlv9EMBbRS2GhIEjM)** 7tracks 34min  
 *psychedelic, indie rock, psychedelic rock, foxygen, indie*
 
