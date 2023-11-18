@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.1.2
+// @version      1.1.4
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -13,6 +13,7 @@ var img = document.createElement('img');
 img.src = 'https://cdn.last.fm/favicon.ico';
 img.height = 24;
 img.style.cursor = 'pointer';
+img.style.marginLeft = '24px';
 document.getElementById('left-content').appendChild(img);
 img.onclick = main;
 
@@ -356,11 +357,11 @@ function getAlbumData() {
             resultStr += "*" + tags + "*\n";
         } else {
             console.log('this.response.error', this.response.error);
-            resultStr = this.response.error;
+            resultStr = artist + ' last.fm error#' + this.response.error + ' - ' + this.response.message;
         }
         document.querySelector('div.metadata').querySelector('#description').querySelector('.descr-pre').innerText = resultStr;
     }
     xhr.send();
 }
 
-main();
+/*main();*/
