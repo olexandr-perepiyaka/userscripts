@@ -14,9 +14,6 @@
 
 ## released
 
-**[Vanishing Twin](https://www.last.fm/music/Vanishing+Twin) 2019-06-07 [The Age of Immunology](https://music.youtube.com/playlist?list=OLAK5uy_l4K-Kcs8McNGYA93jDEPoMKoF2QSJqug4)** 10tracks 45min  
-*psychedelic pop, psychedelic, art pop, british, experimental*
-
 **[Musumeci](https://www.last.fm/music/Musumeci) 2019-09-27 [Arcade](https://music.youtube.com/playlist?list=OLAK5uy_nBnGlvAkDWpG1o610dp6ruotYYl2zeqMs)** 7tracks 42min  
 *minimal wave, minimal electronic, deep house, 80's, italian synthwave*
 
