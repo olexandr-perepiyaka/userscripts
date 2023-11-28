@@ -14,9 +14,6 @@
 
 ## released
 
-**[Musumeci](https://www.last.fm/music/Musumeci) 2019-09-27 [Arcade](https://music.youtube.com/playlist?list=OLAK5uy_nBnGlvAkDWpG1o610dp6ruotYYl2zeqMs)** 7tracks 42min  
-*minimal wave, minimal electronic, deep house, 80's, italian synthwave*
-
 **[Nico Fidenco](https://www.last.fm/music/Nico+Fidenco) 2013-04-17 [Porno Holocaust (Original Motion Picture Soundtrack)](https://music.youtube.com/playlist?list=OLAK5uy_llL7OcZbaZc08hGxkvTRK_s6KHLB_W9N4)** 18tracks 59min  
 *italian, Soundtrack, singer-songwriter, composer, italiana*
 
