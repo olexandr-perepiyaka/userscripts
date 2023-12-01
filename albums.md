@@ -1,8 +1,5 @@
 ## not released yet
 
-**[Jonathan Rado](https://www.last.fm/music/Jonathan+Rado) 2023-12-01 [For Who The Bell Tolls For](https://music.youtube.com/playlist?list=OLAK5uy_mRSndQ8vO9hkbQm8wlv9EMBbRS2GhIEjM)** 7tracks 34min  
-*psychedelic, indie rock, psychedelic rock, foxygen, indie*
-
 **[Torres](https://www.last.fm/music/Torres) 2024-01-26 [What an enormous room](https://music.youtube.com/playlist?list=OLAK5uy_nspNBxn0XQNafAnqzMQFrc7ZVj1HMDb3w)** 10tracks 35min  
 *indie, folk, alternative, indie pop*
 
