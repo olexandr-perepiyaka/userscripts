@@ -11,9 +11,6 @@
 
 ## released
 
-**[Carmody](https://www.last.fm/music/Carmody) 2009-03-15 [A Better Spider 1981-1985](https://music.youtube.com/playlist?list=OLAK5uy_lhdraz2pBNoKF0xlc7FCrIHU29MFO4TCQ)** 14tracks 59min  
-*new wave, synthpop, minimal synth, minimal wave, 80s*
-
 **[Grapetooth](https://www.last.fm/music/Grapetooth) 2018-11-09 [Grapetooth](https://music.youtube.com/playlist?list=OLAK5uy_mL3RwtQQ3vni1h9ameDtYARgHseVCaJK0)** 10tracks 39min  
 *indie pop, indie, indie rock, usa, new wave*
 
