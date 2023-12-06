@@ -11,9 +11,6 @@
 
 ## released
 
-**[Grapetooth](https://www.last.fm/music/Grapetooth) 2018-11-09 [Grapetooth](https://music.youtube.com/playlist?list=OLAK5uy_mL3RwtQQ3vni1h9ameDtYARgHseVCaJK0)** 10tracks 39min  
-*indie pop, indie, indie rock, usa, new wave*
-
 **[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023-10-13 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
 *indie pop, pop, seen live, british, electronic*
 
