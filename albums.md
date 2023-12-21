@@ -11,9 +11,6 @@
 
 ## released
 
-**[Holly Humberstone](https://www.last.fm/music/Holly+Humberstone) 2023-10-13 [Paint My Bedroom Black](https://music.youtube.com/playlist?list=OLAK5uy_neQVpHROV2ingO7RZ1aBR4EvPjyHM0AyE)** 13tracks 42min  
-*indie pop, pop, seen live, british, electronic*
-
 **[Hand Model](https://www.last.fm/music/Hand+Model) 2023-05-26 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
 *electronic, experimental*
 
