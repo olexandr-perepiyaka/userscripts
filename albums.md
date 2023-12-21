@@ -11,9 +11,6 @@
 
 ## released
 
-**[James Bay](https://www.last.fm/music/James+Bay) 2022-07-12 [Leap (Deluxe Edition)](https://music.youtube.com/playlist?list=OLAK5uy_n1JXWbb_ISlm5adeyV0fUoqaO1qwv4VBY)** 16tracks 57min  
-*folk, indie, singer-songwriter, british, seen live*
-
 **[julie](https://www.last.fm/music/Julie) 2021-08-12 [pushing daisies](https://music.youtube.com/playlist?list=OLAK5uy_mDLFKU-IzBfbcL8C4mgKVcD4tVyM8ap5o)** 6tracks 12min, 37 seconds  
 *shoegaze, danish, pop, noise pop, seen live*
 
