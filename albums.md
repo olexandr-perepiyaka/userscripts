@@ -11,9 +11,6 @@
 
 ## released
 
-**[Hand Model](https://www.last.fm/music/Hand+Model) 2023-05-26 [Will Life Reign Supreme Even In Death](https://music.youtube.com/playlist?list=OLAK5uy_nOZkT4ImOsWF6WpdDxTmQtCH9nIYKSrM8)** 10tracks 35min  
-*electronic, experimental*
-
 **[James Bay](https://www.last.fm/music/James+Bay) 2022-07-12 [Leap (Deluxe Edition)](https://music.youtube.com/playlist?list=OLAK5uy_n1JXWbb_ISlm5adeyV0fUoqaO1qwv4VBY)** 16tracks 57min  
 *folk, indie, singer-songwriter, british, seen live*
 
