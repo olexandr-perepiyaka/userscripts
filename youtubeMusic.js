@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.1.4
+// @version      1.2.2
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
 // @updateURL    https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
+// @require      https://apis.google.com/js/api.js
 // ==/UserScript==
 
 var img = document.createElement('img');
@@ -111,7 +112,7 @@ function createScrobbleDiv(trackDiv, trackStr, artistStr) {
         lasfmInfoDiv.appendChild(mainArtistDl);
 
         var artistsToSplit = '';
-        if(/&/.exec(artistStr)) {
+        if(/&/.exec(artistStr) || /,/.exec(artistStr)) {
             artistsToSplit += artistStr;
         }
 
@@ -237,8 +238,10 @@ function getTrackScrobbles(trackDl) {
                         + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '')
                     ;
                 }
+                trackDl.parentNode.previousSibling.style.borderRight = 'none';
             } else {
                 scResHTML = '<font color="red">not scrobbled</font>';
+                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #b90000';
             }
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
@@ -316,8 +319,8 @@ function getAlbumData() {
         descrFirstChild.innerText = '';
     }
 
-    var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
-    var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
+    const albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
+    const artistYearArr = albumDetailsArr[1].textContent.split(" • ");
 
     const artist = artistYearArr[1];
     const year = artistYearArr[2];
@@ -340,12 +343,7 @@ function getAlbumData() {
     xhr.onloadend = function () {
         var resultStr;
         if (this.response.error === undefined) {
-            resultStr =
-                '**' + year + "**  \n"
-                + '**[' + artist + '](' + this.response.artist.url + ')'
-                + ' - [' + title + '](' + document.location.href + ")**  \n"
-                + tracksMins + "  \n"
-            ;
+            resultStr = year + "\n" + tracksMins + "\n";
             console.log(this.response.artist.url);
             var tags = '';
             if (this.response.artist.tags.tag.length > 0) {
@@ -354,7 +352,7 @@ function getAlbumData() {
                 }
             }
             console.log(tags);
-            resultStr += "*" + tags + "*\n";
+            resultStr += tags + "\n";
         } else {
             console.log('this.response.error', this.response.error);
             resultStr = artist + ' last.fm error#' + this.response.error + ' - ' + this.response.message;
@@ -362,6 +360,61 @@ function getAlbumData() {
         document.querySelector('div.metadata').querySelector('#description').querySelector('.descr-pre').innerText = resultStr;
     }
     xhr.send();
+}
+
+document.onmouseover = function(event){
+    var elem = event.target;
+
+    if (elem.tagName == 'YTMUSIC-RESPONSIVE-LIST-ITEM-RENDERER') {
+        //elem.title = "\nclassName: " + elem.className;
+        var title = elem.querySelector('.title-column').querySelector('.title').title;
+        //elem.title += "\ntitle: " + title;
+        var secondaryFlexColumns0FlexColumnTitle = elem.querySelector('.secondary-flex-columns').querySelectorAll('.flex-column')[0].title;
+        //elem.title += "\nsecondaryFlexColumns0FlexColumnTitle: " + secondaryFlexColumns0FlexColumnTitle;
+        var artist = secondaryFlexColumns0FlexColumnTitle;
+        if (secondaryFlexColumns0FlexColumnTitle == '' && document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer')) {
+            var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
+            var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
+            var artistYearArr1 = artistYearArr[1];
+            artist = artistYearArr1;
+        }
+        //elem.title += "\nartistYearArr1: " + artistYearArr1;
+        //elem.title += "\nartist: " + artist;
+        elem.title = artist + " - " + title;
+        //elem.style.borderRight = '3px solid #b90000';
+    }
+}
+
+document.body.onclick = function(event){
+    /*document.getElementById('browse-page').querySelector('.subtitle').lastChild.onclick */
+    console.log(event.target.tagName, event.target.className, event.target.parentNode.tagName, event.target.parentNode.className);
+    if (event.target.tagName == 'SPAN' && event.target.className == 'style-scope yt-formatted-string'
+        && event.target.parentNode.tagName == 'YT-FORMATTED-STRING' && event.target.parentNode.className == 'subtitle style-scope ytmusic-detail-header-renderer'
+    ) {
+        const documentLocationHref = new URL(document.location.href);
+        const listParam = documentLocationHref.searchParams.get('list');
+        console.log('listParam:', listParam);
+        const gAPIurl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyAFoISkwrca6mDMaIJc9kpfIr0OJNknlG4&playlistId=' + listParam;
+        console.log('gAPIurl:', gAPIurl);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", gAPIurl, true);
+        xhr.responseType = "json";
+        xhr.onloadend = function () {
+            document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText = '';
+            var releasedOnArr = [];
+            this.response.items.forEach(item => {
+                console.log(item.snippet.description);
+                var releasedOn = /Released on: (.*?)\n/.exec(item.snippet.description);
+                console.log('releasedOn', releasedOn);
+                if (releasedOn && releasedOnArr.indexOf(releasedOn[1]) < 0) {
+                    document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText += releasedOn[1];
+                    releasedOnArr.push(releasedOn[1]);
+                }
+            });
+        }
+        xhr.send();
+    }
 }
 
 /*main();*/
