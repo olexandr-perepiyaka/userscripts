@@ -11,9 +11,6 @@
 
 ## released
 
-**[Midwife & Vyva Melinkolya](https://www.last.fm/music/Midwife+&+Vyva+Melinkolya) 2023-05-12 [Orbweaving](https://music.youtube.com/playlist?list=OLAK5uy_lrp8cvzlgN9AVCwsKAQzQvNuUhaymLdyE)** 5tracks 32min  
-*shoegaze, electronic, vocal, pop, ambient*
-
 **[Dana Sipos](https://www.last.fm/music/Dana+Sipos) 2018-05-18 [Trick of the Light](https://music.youtube.com/playlist?list=OLAK5uy_nKNSfd96vXWF8vIQcNUIZ0xeK0dfHs8P8)** 10tracks 42min  
 *folk, moody, singer/songwriter, canadiana*
 
