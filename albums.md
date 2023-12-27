@@ -11,9 +11,6 @@
 
 ## released
 
-**[torr](https://www.last.fm/music/+noredirect/torr) 2023-07-28 [molecule](https://music.youtube.com/playlist?list=OLAK5uy_ly5qi-lJRfojYHLNGiHqr_ncP_zPG60IA)** 10tracks 26min  
-*thrash metal, black metal, seen live, thrash-black metal, hyperpop*
-
 **[J.E. Sunde](https://www.last.fm/music/J.E.+Sunde) 2017-03-03 [Now I Feel Adored](https://music.youtube.com/playlist?list=OLAK5uy_kthAE600XWklcJXebaim4dr5XGkcaxyLA)** 12tracks 38min  
 *minnesota, folk, indie pop, singer-songwriter, seen live*
 
