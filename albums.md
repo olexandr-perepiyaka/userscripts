@@ -11,9 +11,6 @@
 
 ## released
 
-**[Dana Sipos](https://www.last.fm/music/Dana+Sipos) 2018-05-18 [Trick of the Light](https://music.youtube.com/playlist?list=OLAK5uy_nKNSfd96vXWF8vIQcNUIZ0xeK0dfHs8P8)** 10tracks 42min  
-*folk, moody, singer/songwriter, canadiana*
-
 **[The Rolling Stones](https://www.last.fm/music/The+Rolling+Stones) 2023-10-20 [Hackney Diamonds](https://music.youtube.com/playlist?list=OLAK5uy_kbNnLNPcv2u6DieeCum5qb3V-SdGKfSgo)** 12tracks 48min  
 *classic rock, rock, british, 60s, blues*
 
