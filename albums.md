@@ -11,9 +11,6 @@
 
 ## released
 
-**[The Rolling Stones](https://www.last.fm/music/The+Rolling+Stones) 2023-10-20 [Hackney Diamonds](https://music.youtube.com/playlist?list=OLAK5uy_kbNnLNPcv2u6DieeCum5qb3V-SdGKfSgo)** 12tracks 48min  
-*classic rock, rock, british, 60s, blues*
-
 **[torr](https://www.last.fm/music/+noredirect/torr) 2023-07-28 [molecule](https://music.youtube.com/playlist?list=OLAK5uy_ly5qi-lJRfojYHLNGiHqr_ncP_zPG60IA)** 10tracks 26min  
 *thrash metal, black metal, seen live, thrash-black metal, hyperpop*
 
