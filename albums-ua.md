@@ -1,7 +1,3 @@
-**2022-07-22**  
-**[Рух 01](https://music.youtube.com/playlist?list=OLAK5uy_kVj8pLFPwSF8dQTE2szpnPkXpuZQg9Gn0)**   
-10tracks 49min
-
 **2023-10-13**  
 **[Zwyntar](https://www.last.fm/music/Zwyntar "gothic country, gothic, dark folk, folk") -  [Тисяча Очей](https://music.youtube.com/playlist?list=OLAK5uy_l-pzd0rwr542XUY4Rn-eLZVZ6iPd8TcLk)**  
 11tracks 44min  
