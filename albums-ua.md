@@ -1,8 +1,3 @@
-**2023-10-13**  
-**[Zwyntar](https://www.last.fm/music/Zwyntar "gothic country, gothic, dark folk, folk") -  [Тисяча Очей](https://music.youtube.com/playlist?list=OLAK5uy_l-pzd0rwr542XUY4Rn-eLZVZ6iPd8TcLk)**  
-11tracks 44min  
-*gothic country, Gothic, dark folk, folk*
-
 **2023-10-12**  
 **[Харківський ЛітМузей, Serhiy Zhadan & Yuriy Gurzhy](https://www.last.fm/music/%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9+%D0%9B%D1%96%D1%82%D0%9C%D1%83%D0%B7%D0%B5%D0%B9,+Serhiy+Zhadan,+&+Yuriy+Gurzhy) - [SKOVORODANCE](https://music.youtube.com/playlist?list=OLAK5uy_li9Lm6z9oRGIKNpFNoL8ebHXD5Ln654Qs)**  
 12tracks 45min  
