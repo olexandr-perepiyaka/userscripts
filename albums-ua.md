@@ -1,8 +1,3 @@
-**2022-06-03**  
-**[morgendie](https://www.last.fm/music/morgendie) - [секретний сад](https://music.youtube.com/playlist?list=OLAK5uy_ku4OuqbZ-BK-3rZ0Qgqo0UDtTlIZKcojU)**  
-12tracks 42min  
-*ukrainian, darkwave, indie, indie pop, electronic*
-
 **2023-03-09**  
 **[Тонка](https://www.last.fm/music/%D0%A2%D0%BE%D0%BD%D0%BA%D0%B0) - [Загублену весну](https://music.youtube.com/playlist?list=OLAK5uy_n9RBEHXpLCYdUnqSJGRpdXDFtNUPFiEeo)**  
 5tracks 18min  
