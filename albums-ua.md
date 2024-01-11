@@ -7,3 +7,8 @@
 **[Димна Суміш](https://www.last.fm/music/+noredirect/%D0%94%D0%B8%D0%BC%D0%BD%D0%B0+%D0%A1%D1%83%D0%BC%D1%96%D1%88) - [Ти живий](https://music.youtube.com/playlist?list=OLAK5uy_ltLMrLDvDutrvXk9_WjORglYq4_EoYhZQ)**  
 9tracks 33min  
 *grunge, alternative, post-grunge, alternative rock*
+
+**2023-11-10**  
+**[PROBASS ∆ HARDI](https://www.last.fm/music/PROBASS+%E2%88%86+HARDI) - [ДОБРОГО ВЕЧОРА, МИ З УКРАЇНИ!](https://music.youtube.com/playlist?list=OLAK5uy_kyE65DXvxellPWhdtFD1-nFkFhyKObGA8)**  
+15tracks 44min  
+*ukraine, ukrainian, electronic, edm, dance*  
