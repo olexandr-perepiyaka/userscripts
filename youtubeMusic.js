@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.2
+// @version      1.2.3
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
 // @downloadURL  https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
 // @updateURL    https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/youtubeMusic.js
-// @require      https://apis.google.com/js/api.js
 // ==/UserScript==
 
 var img = document.createElement('img');
@@ -238,10 +237,10 @@ function getTrackScrobbles(trackDl) {
                         + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '')
                     ;
                 }
-                trackDl.parentNode.previousSibling.style.borderRight = 'none';
+                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #b90000';
             } else {
                 scResHTML = '<font color="red">not scrobbled</font>';
-                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #b90000';
+                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #46ffff';
             }
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
@@ -362,59 +361,160 @@ function getAlbumData() {
     xhr.send();
 }
 
-document.onmouseover = function(event){
-    var elem = event.target;
+function getAlbumReleasedDate(){
+    const documentLocationHref = new URL(document.location.href);
+    const listParam = documentLocationHref.searchParams.get('list');
+    console.log('listParam:', listParam);
+    const gAPIurl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyAFoISkwrca6mDMaIJc9kpfIr0OJNknlG4&playlistId=' + listParam;
+    console.log('gAPIurl:', gAPIurl);
 
-    if (elem.tagName == 'YTMUSIC-RESPONSIVE-LIST-ITEM-RENDERER') {
-        //elem.title = "\nclassName: " + elem.className;
-        var title = elem.querySelector('.title-column').querySelector('.title').title;
-        //elem.title += "\ntitle: " + title;
-        var secondaryFlexColumns0FlexColumnTitle = elem.querySelector('.secondary-flex-columns').querySelectorAll('.flex-column')[0].title;
-        //elem.title += "\nsecondaryFlexColumns0FlexColumnTitle: " + secondaryFlexColumns0FlexColumnTitle;
-        var artist = secondaryFlexColumns0FlexColumnTitle;
-        if (secondaryFlexColumns0FlexColumnTitle == '' && document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer')) {
-            var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
-            var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
-            var artistYearArr1 = artistYearArr[1];
-            artist = artistYearArr1;
-        }
-        //elem.title += "\nartistYearArr1: " + artistYearArr1;
-        //elem.title += "\nartist: " + artist;
-        elem.title = artist + " - " + title;
-        //elem.style.borderRight = '3px solid #b90000';
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", gAPIurl, true);
+    xhr.responseType = "json";
+    xhr.onloadend = function () {
+        document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText = '';
+        var releasedOnArr = [];
+        this.response.items.forEach(item => {
+            console.log(item.snippet.description);
+            var releasedOn = /Released on: (.*?)\n/.exec(item.snippet.description);
+            console.log('releasedOn', releasedOn);
+            if (releasedOn && releasedOnArr.indexOf(releasedOn[1]) < 0) {
+                document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText += releasedOn[1];
+                releasedOnArr.push(releasedOn[1]);
+            }
+        });
+    }
+    xhr.send();
+}
+
+function targetTrackScrobbles(elem) {
+    //var trScrSpan = elem.querySelector('#columnar-layout-badges > span.span-track-scrobbles');
+    var trScrSpan = elem.querySelector('.title-column').querySelector('.title').querySelector('span.span-track-scrobbles');
+    if (!trScrSpan) {
+        trScrSpan = document.createElement('span');
+        trScrSpan.className = 'span-track-scrobbles';
+        //trScrSpan.style.fontSize = '12px';
+        trScrSpan.style.padding = '0 4px';
+        trScrSpan.style.borderRadius = '0.4em';
+        //elem.querySelector('#columnar-layout-badges').appendChild(trScrSpan);
+        elem.querySelector('.title-column').querySelector('.title').insertAdjacentElement("afterbegin", trScrSpan);
+    }
+    trScrSpan.innerText = '?';
+    trScrSpan.style.color = '#000';
+    trScrSpan.style.backgroundColor = '#FF0';
+    trScrSpan.title = 'track scrobbles request';
+
+    var title = elem.querySelector('.title-column').querySelector('.title').title;
+    var artist = elem.querySelector('.secondary-flex-columns').querySelectorAll('.flex-column')[0].title;
+    console.log('artist', artist);
+    if (artist == '' && document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer')) {
+        var albumDetailsArr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer');
+        var artistYearArr = albumDetailsArr[1].textContent.split(" • ");
+        artist = elem.querySelector('.secondary-flex-columns').querySelectorAll('.flex-column')[0].title = artistYearArr[1];
+        console.log('artist', artist);
+    }
+
+    elem.title = artist + " - " + title;
+
+    console.log('artist', artist);
+    console.log('title', title);
+    if (artist && title && artist != '' && title != '') {
+        var url =
+            'https://ws.audioscrobbler.com/2.0/?method=user.getTrackScrobbles'
+            + '&user=' + lastfmNickname
+            + '&api_key=' + lastfmAPIKey
+            + '&artist=' + encodeURIComponent(artist).replace(/%20/g, '+')
+            + '&track=' + encodeURIComponent(title).replace(/%20/g, '+')
+            + '&format=json'
+        ;
+        console.log(url);
+
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "json";
+        xhr.open("GET", url, true);
+        xhr.onloadend = function () {
+            var date_uts, track_date, track_date_time;
+            //console.log(this.response);
+            if (this.response.error !== undefined) {
+                elem.title += "\ntrack scrobbles error: " + this.response.message;
+            } else {
+                if (this.response.trackscrobbles.track[0] !== undefined) {
+                    trScrSpan.title = 'track scrobbles (datetime - album):';
+                    var title = '';
+                    for (var t in this.response.trackscrobbles.track) {
+                        console.log('t', t);
+                        date_uts = parseInt(this.response.trackscrobbles.track[t].date.uts) * 1000;
+                        track_date = new Date(date_uts);
+                        track_date_time = track_date.toLocaleString("sv-SE");
+                        title = "\n" + track_date_time + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '');
+                        elem.title += title;
+                        trScrSpan.title += title;
+                    }
+                    console.log('this.response.trackscrobbles.track.length', this.response.trackscrobbles.track.length);
+                    trScrSpan.innerText = this.response.trackscrobbles.track.length;
+                    trScrSpan.style.backgroundColor = '#b90000';
+                    trScrSpan.style.color = '#fff';
+                    elem.style.borderRight = '3px solid #b90000';
+                } else {
+                    trScrSpan.innerText = '0';
+                    trScrSpan.style.backgroundColor = '#46ffff';
+                    elem.title += "\nnot scrobbled";
+                    trScrSpan.title = "track not scrobbled";
+                    elem.style.borderRight = '3px solid #46ffff';
+                }
+            }
+        };
+        xhr.send();
+        elem.style.borderRight = '3px solid #FF0';
     }
 }
 
-document.body.onclick = function(event){
-    /*document.getElementById('browse-page').querySelector('.subtitle').lastChild.onclick */
-    console.log(event.target.tagName, event.target.className, event.target.parentNode.tagName, event.target.parentNode.className);
-    if (event.target.tagName == 'SPAN' && event.target.className == 'style-scope yt-formatted-string'
-        && event.target.parentNode.tagName == 'YT-FORMATTED-STRING' && event.target.parentNode.className == 'subtitle style-scope ytmusic-detail-header-renderer'
-    ) {
-        const documentLocationHref = new URL(document.location.href);
-        const listParam = documentLocationHref.searchParams.get('list');
-        console.log('listParam:', listParam);
-        const gAPIurl = 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyAFoISkwrca6mDMaIJc9kpfIr0OJNknlG4&playlistId=' + listParam;
-        console.log('gAPIurl:', gAPIurl);
+function bgColorOnMouse(event){
+    if (event.type == 'mouseover') event.target.style.backgroundColor = '#d9d9d9';
+    if (event.type == 'mouseout') event.target.style.removeProperty("background-color");
+}
 
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", gAPIurl, true);
-        xhr.responseType = "json";
-        xhr.onloadend = function () {
-            document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText = '';
-            var releasedOnArr = [];
-            this.response.items.forEach(item => {
-                console.log(item.snippet.description);
-                var releasedOn = /Released on: (.*?)\n/.exec(item.snippet.description);
-                console.log('releasedOn', releasedOn);
-                if (releasedOn && releasedOnArr.indexOf(releasedOn[1]) < 0) {
-                    document.getElementById('browse-page').querySelector('.subtitle').lastChild.innerText += releasedOn[1];
-                    releasedOnArr.push(releasedOn[1]);
-                }
+function elementEventListener(event) {
+    var elem = event.target;
+    /*if (!elem.title.includes('tagName:')) {
+        elem.title += "\ntagName: " + elem.tagName + "\nclassName: " + elem.className;
+    }*/
+
+    /* album detals */
+    if (event.target.tagName == 'DIV' && event.target.className == 'subtitle-container style-scope ytmusic-detail-header-renderer') {
+        bgColorOnMouse(event);
+        if (event.type == 'click') getAlbumReleasedDate();
+    }
+
+    /* track element */
+    if (event.target.tagName == 'YTMUSIC-RESPONSIVE-LIST-ITEM-RENDERER') {
+        bgColorOnMouse(event);
+        if (event.type == 'click') targetTrackScrobbles(event.target);
+    }
+
+    /* tracks list */
+    if (event.target.tagName == 'DIV' && event.target.className == 'style-scope ytmusic-section-list-renderer') {
+        bgColorOnMouse(event);
+
+        if (event.type == 'click') {
+            event.target.querySelectorAll('ytmusic-responsive-list-item-renderer').forEach(function (elem) {
+                targetTrackScrobbles(elem);
             });
         }
-        xhr.send();
     }
 }
 
-/*main();*/
+document.body.onmouseover = function(event){elementEventListener(event)}
+document.body.onmouseout = function(event){elementEventListener(event)}
+document.body.onclick = function(event){elementEventListener(event)}
+
+var listItemsLength;
+window.onlocationchange = function (event) {
+    console.log('event.type', event.type);
+    listItemsLength = document.getElementById('browse-page').querySelectorAll('ytmusic-responsive-list-item-renderer').length;
+    console.log('listItemsLength', listItemsLength);
+}
+
+/*
+main();
+*/
