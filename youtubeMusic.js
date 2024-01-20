@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.3
+// @version      1.2.4
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -16,6 +16,7 @@ img.style.cursor = 'pointer';
 img.style.marginLeft = '24px';
 document.getElementById('left-content').appendChild(img);
 img.onclick = main;
+
 
 const lastfmNickname = 'xander667';
 const lastfmAPIKey = 'a088b0c423e72ee735fd4b1e592341b4';
@@ -311,7 +312,7 @@ function getAlbumData() {
 
     var descrFirstChild = document.querySelector('div.metadata').querySelector('#description').firstChild;
     if (descrFirstChild.className != 'descr-pre') {
-        descrFirstChild = document.createElement('pre');
+        descrFirstChild = document.createElement('div');
         descrFirstChild.className = 'descr-pre';
         document.querySelector('div.metadata').querySelector('#description').insertBefore(descrFirstChild, document.querySelector('div.metadata').querySelector('#description').firstChild);
     } else {
@@ -342,16 +343,16 @@ function getAlbumData() {
     xhr.onloadend = function () {
         var resultStr;
         if (this.response.error === undefined) {
-            resultStr = year + "\n" + tracksMins + "\n";
+            resultStr = artist + ' - ' + title + ' (' + year + ")\n" + tracksMins + "\n";
             console.log(this.response.artist.url);
             var tags = '';
             if (this.response.artist.tags.tag.length > 0) {
                 for (var t in this.response.artist.tags.tag) {
                     tags += (tags == '' ? '' : ', ') + this.response.artist.tags.tag[t].name.toLowerCase();
                 }
+                resultStr += tags + "\n";
             }
-            console.log(tags);
-            resultStr += tags + "\n";
+            resultStr += this.response.artist.stats.userplaycount + " userplaycount(s)\n";
         } else {
             console.log('this.response.error', this.response.error);
             resultStr = artist + ' last.fm error#' + this.response.error + ' - ' + this.response.message;
@@ -383,25 +384,44 @@ function getAlbumReleasedDate(){
                 releasedOnArr.push(releasedOn[1]);
             }
         });
+        getAlbumData();
     }
     xhr.send();
 }
 
+function getDivSpan(elem, spanClassName) {
+    var div = elem.querySelector('div.last-fm-info');
+    if (!div) {
+        div = document.createElement('div');
+        div.className = 'last-fm-info';
+        div.style.position = 'absolute';
+        div.style.bottom = '0';
+        div.style.left = '55px';
+        div.style.zIndex = '1';
+        elem.appendChild(div);
+    }
+    var span = div.querySelector('span.' + spanClassName);
+    if (!span) {
+        span = document.createElement('span');
+        span.className = spanClassName;
+        span.style.padding = '0 4px';
+        span.style.borderRadius = '0.5em';
+        div.appendChild(span);
+    }
+    return span;
+}
+
 function targetTrackScrobbles(elem) {
     //var trScrSpan = elem.querySelector('#columnar-layout-badges > span.span-track-scrobbles');
-    var trScrSpan = elem.querySelector('.title-column').querySelector('.title').querySelector('span.span-track-scrobbles');
-    if (!trScrSpan) {
-        trScrSpan = document.createElement('span');
-        trScrSpan.className = 'span-track-scrobbles';
-        //trScrSpan.style.fontSize = '12px';
-        trScrSpan.style.padding = '0 4px';
-        trScrSpan.style.borderRadius = '0.4em';
-        //elem.querySelector('#columnar-layout-badges').appendChild(trScrSpan);
-        elem.querySelector('.title-column').querySelector('.title').insertAdjacentElement("afterbegin", trScrSpan);
-    }
+    //var trScrSpan = elem.querySelector('.title-column').querySelector('.title').querySelector('span.span-track-scrobbles');
+
+    //elem.querySelector('#columnar-layout-badges').appendChild(trScrSpan);
+    //elem.querySelector('.title-column').querySelector('.title').insertAdjacentElement("afterbegin", trScrSpan);
+
+    var trScrSpan = getDivSpan(elem, 'span-track-scrobbles');
     trScrSpan.innerText = '?';
     trScrSpan.style.color = '#000';
-    trScrSpan.style.backgroundColor = '#FF0';
+    trScrSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
     trScrSpan.title = 'track scrobbles request';
 
     var title = elem.querySelector('.title-column').querySelector('.title').title;
@@ -414,11 +434,8 @@ function targetTrackScrobbles(elem) {
         console.log('artist', artist);
     }
 
-    elem.title = artist + " - " + title;
-
-    console.log('artist', artist);
-    console.log('title', title);
     if (artist && title && artist != '' && title != '') {
+        elem.title = artist + " - " + title;
         var url =
             'https://ws.audioscrobbler.com/2.0/?method=user.getTrackScrobbles'
             + '&user=' + lastfmNickname
@@ -439,10 +456,9 @@ function targetTrackScrobbles(elem) {
                 elem.title += "\ntrack scrobbles error: " + this.response.message;
             } else {
                 if (this.response.trackscrobbles.track[0] !== undefined) {
-                    trScrSpan.title = 'track scrobbles (datetime - album):';
+                    trScrSpan.title = 'track scrobble(s) (date time - album)';
                     var title = '';
                     for (var t in this.response.trackscrobbles.track) {
-                        console.log('t', t);
                         date_uts = parseInt(this.response.trackscrobbles.track[t].date.uts) * 1000;
                         track_date = new Date(date_uts);
                         track_date_time = track_date.toLocaleString("sv-SE");
@@ -452,15 +468,16 @@ function targetTrackScrobbles(elem) {
                     }
                     console.log('this.response.trackscrobbles.track.length', this.response.trackscrobbles.track.length);
                     trScrSpan.innerText = this.response.trackscrobbles.track.length;
-                    trScrSpan.style.backgroundColor = '#b90000';
                     trScrSpan.style.color = '#fff';
+                    trScrSpan.style.backgroundColor = '#b90000';
                     elem.style.borderRight = '3px solid #b90000';
                 } else {
                     trScrSpan.innerText = '0';
-                    trScrSpan.style.backgroundColor = '#46ffff';
+                    trScrSpan.style.color = '#fff';
+                    trScrSpan.style.backgroundColor = 'rgb(185, 0, 0, 0.25)';
                     elem.title += "\nnot scrobbled";
                     trScrSpan.title = "track not scrobbled";
-                    elem.style.borderRight = '3px solid #46ffff';
+                    elem.style.borderRight = '3px solid rgb(185, 0, 0, 0.25)';
                 }
             }
         };
@@ -483,13 +500,17 @@ function elementEventListener(event) {
     /* album detals */
     if (event.target.tagName == 'DIV' && event.target.className == 'subtitle-container style-scope ytmusic-detail-header-renderer') {
         bgColorOnMouse(event);
-        if (event.type == 'click') getAlbumReleasedDate();
+        if (event.type == 'click') {
+            getAlbumReleasedDate();
+        }
     }
 
     /* track element */
     if (event.target.tagName == 'YTMUSIC-RESPONSIVE-LIST-ITEM-RENDERER') {
         bgColorOnMouse(event);
-        if (event.type == 'click') targetTrackScrobbles(event.target);
+        if (event.type == 'click') {
+            targetTrackScrobbles(event.target);
+        }
     }
 
     /* tracks list */
