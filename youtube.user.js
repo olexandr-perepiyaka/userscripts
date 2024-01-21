@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         youtube.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Change youtube video background color on click.
 // @author       alex.perepiyaka@gmail
 // @match        https://www.youtube.com/*
 // @grant        none
+// @downloadUrl  https://github.com/olexandr-perepiyaka/userscripts/raw/master/youtube.user.js
+// @updateUrl    https://github.com/olexandr-perepiyaka/userscripts/raw/master/youtube.user.js
 // ==/UserScript==
 
 document.body.addEventListener("click", function(){
