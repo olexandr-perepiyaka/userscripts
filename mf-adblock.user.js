@@ -6,6 +6,8 @@
 // @author       DerFichtl, with major improvements by Firepup650
 // @match        https://*/*
 // @icon         https://getadblock.com/favicon.ico
+// @downloadUrl  https://github.com/olexandr-perepiyaka/userscripts/raw/master/mf-adblock.user.js
+// @updateUrl    https://github.com/olexandr-perepiyaka/userscripts/raw/master/mf-adblock.user.js
 // @grant        none
 // @noframes
 // ==/UserScript==
