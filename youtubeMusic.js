@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.4
+// @version      1.2.5
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -483,6 +483,35 @@ function targetTrackScrobbles(elem) {
         };
         xhr.send();
         elem.style.borderRight = '3px solid #FF0';
+
+        url =
+            'https://ws.audioscrobbler.com/2.0/?method=track.getInfo'
+            + '&user=' + lastfmNickname
+            + '&api_key=' + lastfmAPIKey
+            + '&artist=' + encodeURIComponent(artist).replace(/%20/g, '+')
+            + '&track=' + encodeURIComponent(title).replace(/%20/g, '+')
+            + '&format=json'
+        ;
+        console.log(url);
+
+        var trLikeSpan = getDivSpan(elem, 'span-track-like');
+        trLikeSpan.style.display = 'none';
+        xhr = new XMLHttpRequest();
+        xhr.responseType = "json";
+        xhr.open("GET", url, true);
+        xhr.onloadend = function () {
+            if (this.response.track.userloved == 1) {
+                trLikeSpan.title = 'track liked';
+                trLikeSpan.innerHTML = '&hearts;';
+                trLikeSpan.style.color = '#fff';
+                trLikeSpan.style.backgroundColor = '#b90000';
+                trLikeSpan.style.marginLeft = '4px';
+                trLikeSpan.style.display = 'inline';
+            } else {
+                trLikeSpan.remove();
+            }
+        };
+        xhr.send();
     }
 }
 
