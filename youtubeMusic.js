@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.5
+// @version      1.2.6
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -389,18 +389,23 @@ function getAlbumReleasedDate(){
     xhr.send();
 }
 
-function getDivSpan(elem, spanClassName) {
+function getDivSpan(elem, spanClassName, attribSelector = '') {
     var div = elem.querySelector('div.last-fm-info');
     if (!div) {
         div = document.createElement('div');
         div.className = 'last-fm-info';
         div.style.position = 'absolute';
-        div.style.bottom = '0';
-        div.style.left = '55px';
+        div.style.bottom = '0'
+        div.style.right = '0';
+        /*div.style.bottom = '-6px';
+        div.style.left = '55px';*/
         div.style.zIndex = '1';
         elem.appendChild(div);
     }
-    var span = div.querySelector('span.' + spanClassName);
+    var selector = 'span.' + spanClassName + attribSelector;
+    console.log('selector', selector);
+    var span = div.querySelector(selector);
+    console.log('span', span);
     if (!span) {
         span = document.createElement('span');
         span.className = spanClassName;
@@ -411,19 +416,7 @@ function getDivSpan(elem, spanClassName) {
     return span;
 }
 
-function targetTrackScrobbles(elem) {
-    //var trScrSpan = elem.querySelector('#columnar-layout-badges > span.span-track-scrobbles');
-    //var trScrSpan = elem.querySelector('.title-column').querySelector('.title').querySelector('span.span-track-scrobbles');
-
-    //elem.querySelector('#columnar-layout-badges').appendChild(trScrSpan);
-    //elem.querySelector('.title-column').querySelector('.title').insertAdjacentElement("afterbegin", trScrSpan);
-
-    var trScrSpan = getDivSpan(elem, 'span-track-scrobbles');
-    trScrSpan.innerText = '?';
-    trScrSpan.style.color = '#000';
-    trScrSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-    trScrSpan.title = 'track scrobbles request';
-
+function targetTrackRoutine(elem) {
     var title = elem.querySelector('.title-column').querySelector('.title').title;
     var artist = elem.querySelector('.secondary-flex-columns').querySelectorAll('.flex-column')[0].title;
     console.log('artist', artist);
@@ -436,6 +429,13 @@ function targetTrackScrobbles(elem) {
 
     if (artist && title && artist != '' && title != '') {
         elem.title = artist + " - " + title;
+
+        var trScrSpan = getDivSpan(elem, 'span-track-scrobbles');
+        trScrSpan.innerText = '?';
+        trScrSpan.style.color = '#000';
+        trScrSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+        trScrSpan.title = 'track scrobbles request';
+
         var url =
             'https://ws.audioscrobbler.com/2.0/?method=user.getTrackScrobbles'
             + '&user=' + lastfmNickname
@@ -512,7 +512,119 @@ function targetTrackScrobbles(elem) {
             }
         };
         xhr.send();
+
+        var artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + artist.replace(/"/g, '\\"') +'"]');
+        artistPlcSpan.dataset.artist = artist;
+        artistPlcSpan.innerText = '?';
+        artistPlcSpan.style.color = '#000';
+        artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+        artistPlcSpan.style.marginLeft = '4px';
+        artistPlcSpan.title = artist + ' playcount request';
+
+        var artistsToSplit = '';
+        if(/&/.exec(artist) || /,/.exec(artist)) {
+            artistsToSplit += artist;
+        }
+
+        var featArtist = /\(feat. (.*?)\)/.exec(title);
+        console.log('featArtist', featArtist);
+        if (featArtist && featArtist[1]) {
+            console.log('featArtist[1]', featArtist[1]);
+            artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + featArtist[1].replace(/"/g, '\\"') +'"]');
+            artistPlcSpan.dataset.artist = featArtist[1];
+            artistPlcSpan.innerText = '?';
+            artistPlcSpan.style.color = '#000';
+            artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+            artistPlcSpan.style.marginLeft = '4px';
+            artistPlcSpan.title = featArtist[1] + ' playcount request';
+
+            if(/&/.exec(featArtist[1])) {
+                artistsToSplit += (artistsToSplit ? ', ' : '') + featArtist[1];
+            }
+        }
+
+        var artistsToSplitAfterReplace = artistsToSplit.replace(/ & /g, ', ').replace(/[,,]+/g, ',');
+
+        if (artistsToSplitAfterReplace != '') {
+            var splittedArtist = artistsToSplitAfterReplace.split(', ');
+
+            for (var j = 0; j < splittedArtist.length; j++) {
+                if (splittedArtist[j] != artist) {
+                    console.log('splittedArtist[j]', splittedArtist[j]);
+                    artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + splittedArtist[j].replace(/"/g, '\\"') +'"]');
+                    artistPlcSpan.dataset.artist = splittedArtist[j];
+                    artistPlcSpan.innerText = '?';
+                    artistPlcSpan.style.color = '#000';
+                    artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+                    artistPlcSpan.style.marginLeft = '4px';
+                    artistPlcSpan.title = splittedArtist[j] + ' playcount request';
+                }
+            }
+        }
     }
+}
+
+function artistsRoutine(elem = null) {
+    var artistSpansParent = document;
+    if (elem) {
+        artistSpansParent = elem;
+    }
+    var artistsArr = [];
+    artistSpansParent.querySelectorAll('.span-artist-plc').forEach(function (artistSpan){
+        if (artistsArr.indexOf(artistSpan.dataset.artist) < 0) {
+            artistsArr.push(artistSpan.dataset.artist);
+
+            const url =
+                'https://ws.audioscrobbler.com/2.0/?method=artist.getInfo'
+                + '&artist=' + encodeURIComponent(artistSpan.dataset.artist).replace(/%20/g, '+')
+                + '&username=' + lastfmNickname
+                + '&api_key=' + lastfmAPIKey
+                + '&format=json'
+            ;
+            console.log(url);
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = "json";
+            xhr.onloadend = function () {
+                var response = this.response;
+                artistSpansParent.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
+                    if (response.error === undefined) {
+                        artistSpan2.innerText = '';
+                        artistSpan2.title = response.artist.name + ' playcount';
+                        var el = document.createElement("a");
+                        el.target = '_blank';
+                        el.style.textDecoration = 'none';
+                        el.style.color = '#fff';
+                        el.textContent = response.artist.stats.userplaycount;
+                        if (parseInt(response.artist.stats.userplaycount) > 0) {
+                            artistSpan2.style.color = '#fff';
+                            artistSpan2.style.backgroundColor = 'rgb(0, 0, 185)';
+                            el.href = 'https://www.last.fm/user/' + lastfmNickname + '/library/music/' + encodeURIComponent(response.artist.name).replace(/%20/g, '+');;
+                        } else {
+                            artistSpan2.style.color = '#fff';
+                            artistSpan2.style.backgroundColor = 'rgb(0, 0, 185, 0.25)';
+                            el.href = response.artist.url;
+                        }
+                        artistSpan2.appendChild(el);
+
+                        if (response.artist.tags.tag.length > 0) {
+                            artistSpan2.title += "\ntags:";
+                            for (var t in response.artist.tags.tag) {
+                                artistSpan2.title += ' ' + response.artist.tags.tag[t].name.toLowerCase();
+                            }
+                        }
+                    } else {
+                        artistSpan2.innerText = '!';
+                        artistSpan2.style.color = '#fff';
+                        artistSpan2.style.backgroundColor = 'rgb(0, 0, 185, 0.25)';
+                        artistSpan2.title = artistSpan.dataset.artist + " response error#" + response.error + "\n" + response.message;
+                    }
+                });
+            }
+            xhr.send();
+        }
+    });
+    console.log('artistsArr', artistsArr);
 }
 
 function bgColorOnMouse(event){
@@ -538,7 +650,8 @@ function elementEventListener(event) {
     if (event.target.tagName == 'YTMUSIC-RESPONSIVE-LIST-ITEM-RENDERER') {
         bgColorOnMouse(event);
         if (event.type == 'click') {
-            targetTrackScrobbles(event.target);
+            targetTrackRoutine(event.target);
+            artistsRoutine(event.target);
         }
     }
 
@@ -548,8 +661,9 @@ function elementEventListener(event) {
 
         if (event.type == 'click') {
             event.target.querySelectorAll('ytmusic-responsive-list-item-renderer').forEach(function (elem) {
-                targetTrackScrobbles(elem);
+                targetTrackRoutine(elem);
             });
+            artistsRoutine();
         }
     }
 }
