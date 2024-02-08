@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.6
+// @version      1.2.7
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -238,10 +238,10 @@ function getTrackScrobbles(trackDl) {
                         + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '')
                     ;
                 }
-                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #b90000';
+                //trackDl.parentNode.previousSibling.style.borderRight = '3px solid #b90000';
             } else {
                 scResHTML = '<font color="red">not scrobbled</font>';
-                trackDl.parentNode.previousSibling.style.borderRight = '3px solid #46ffff';
+                //trackDl.parentNode.previousSibling.style.borderRight = '3px solid #46ffff';
             }
             trackDl.querySelector('dd.track-scrobbles').innerHTML = scResHTML;
         }
@@ -430,10 +430,51 @@ function targetTrackRoutine(elem) {
     if (artist && title && artist != '' && title != '') {
         elem.title = artist + " - " + title;
 
+        var artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + artist.replace(/"/g, '\\"') +'"]');
+        artistPlcSpan.dataset.artist = artist;
+        artistPlcSpan.style.marginLeft = '4px';
+        artistPlcSpan.title = artist + ' playcount request';
+
+        var artistsToSplit = '';
+        if(/&/.exec(artist) || /,/.exec(artist)) {
+            artistsToSplit += artist;
+        }
+
+        var featArtist = /\(feat. (.*?)\)/.exec(title);
+        console.log('featArtist', featArtist);
+        if (featArtist && featArtist[1]) {
+            console.log('featArtist[1]', featArtist[1]);
+            artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + featArtist[1].replace(/"/g, '\\"') +'"]');
+            artistPlcSpan.dataset.artist = featArtist[1];
+            artistPlcSpan.style.marginLeft = '4px';
+            artistPlcSpan.title = featArtist[1] + ' playcount request';
+
+            if(/&/.exec(featArtist[1])) {
+                artistsToSplit += (artistsToSplit ? ', ' : '') + featArtist[1];
+            }
+        }
+
+        var artistsToSplitAfterReplace = artistsToSplit.replace(/ & /g, ', ').replace(/[,,]+/g, ',');
+
+        if (artistsToSplitAfterReplace != '') {
+            var splittedArtist = artistsToSplitAfterReplace.split(', ');
+
+            for (var j = 0; j < splittedArtist.length; j++) {
+                if (splittedArtist[j] != artist) {
+                    console.log('splittedArtist[j]', splittedArtist[j]);
+                    artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + splittedArtist[j].replace(/"/g, '\\"') +'"]');
+                    artistPlcSpan.dataset.artist = splittedArtist[j];
+                    artistPlcSpan.style.marginLeft = '4px';
+                    artistPlcSpan.title = splittedArtist[j] + ' playcount request';
+                }
+            }
+        }
+
         var trScrSpan = getDivSpan(elem, 'span-track-scrobbles');
         trScrSpan.innerText = '?';
         trScrSpan.style.color = '#000';
         trScrSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+        trScrSpan.style.marginLeft = '4px';
         trScrSpan.title = 'track scrobbles request';
 
         var url =
@@ -470,19 +511,19 @@ function targetTrackRoutine(elem) {
                     trScrSpan.innerText = this.response.trackscrobbles.track.length;
                     trScrSpan.style.color = '#fff';
                     trScrSpan.style.backgroundColor = '#b90000';
-                    elem.style.borderRight = '3px solid #b90000';
+                    //elem.style.borderRight = '3px solid #b90000';
                 } else {
                     trScrSpan.innerText = '0';
                     trScrSpan.style.color = '#fff';
                     trScrSpan.style.backgroundColor = 'rgb(185, 0, 0, 0.25)';
                     elem.title += "\nnot scrobbled";
                     trScrSpan.title = "track not scrobbled";
-                    elem.style.borderRight = '3px solid rgb(185, 0, 0, 0.25)';
+                    //elem.style.borderRight = '3px solid rgb(185, 0, 0, 0.25)';
                 }
             }
         };
         xhr.send();
-        elem.style.borderRight = '3px solid #FF0';
+        //elem.style.borderRight = '3px solid #FF0';
 
         url =
             'https://ws.audioscrobbler.com/2.0/?method=track.getInfo'
@@ -512,55 +553,6 @@ function targetTrackRoutine(elem) {
             }
         };
         xhr.send();
-
-        var artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + artist.replace(/"/g, '\\"') +'"]');
-        artistPlcSpan.dataset.artist = artist;
-        artistPlcSpan.innerText = '?';
-        artistPlcSpan.style.color = '#000';
-        artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-        artistPlcSpan.style.marginLeft = '4px';
-        artistPlcSpan.title = artist + ' playcount request';
-
-        var artistsToSplit = '';
-        if(/&/.exec(artist) || /,/.exec(artist)) {
-            artistsToSplit += artist;
-        }
-
-        var featArtist = /\(feat. (.*?)\)/.exec(title);
-        console.log('featArtist', featArtist);
-        if (featArtist && featArtist[1]) {
-            console.log('featArtist[1]', featArtist[1]);
-            artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + featArtist[1].replace(/"/g, '\\"') +'"]');
-            artistPlcSpan.dataset.artist = featArtist[1];
-            artistPlcSpan.innerText = '?';
-            artistPlcSpan.style.color = '#000';
-            artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-            artistPlcSpan.style.marginLeft = '4px';
-            artistPlcSpan.title = featArtist[1] + ' playcount request';
-
-            if(/&/.exec(featArtist[1])) {
-                artistsToSplit += (artistsToSplit ? ', ' : '') + featArtist[1];
-            }
-        }
-
-        var artistsToSplitAfterReplace = artistsToSplit.replace(/ & /g, ', ').replace(/[,,]+/g, ',');
-
-        if (artistsToSplitAfterReplace != '') {
-            var splittedArtist = artistsToSplitAfterReplace.split(', ');
-
-            for (var j = 0; j < splittedArtist.length; j++) {
-                if (splittedArtist[j] != artist) {
-                    console.log('splittedArtist[j]', splittedArtist[j]);
-                    artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + splittedArtist[j].replace(/"/g, '\\"') +'"]');
-                    artistPlcSpan.dataset.artist = splittedArtist[j];
-                    artistPlcSpan.innerText = '?';
-                    artistPlcSpan.style.color = '#000';
-                    artistPlcSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
-                    artistPlcSpan.style.marginLeft = '4px';
-                    artistPlcSpan.title = splittedArtist[j] + ' playcount request';
-                }
-            }
-        }
     }
 }
 
@@ -587,7 +579,7 @@ function artistsRoutine(elem = null) {
             xhr.responseType = "json";
             xhr.onloadend = function () {
                 var response = this.response;
-                artistSpansParent.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
+                document.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
                     if (response.error === undefined) {
                         artistSpan2.innerText = '';
                         artistSpan2.title = response.artist.name + ' playcount';
@@ -622,6 +614,11 @@ function artistsRoutine(elem = null) {
                 });
             }
             xhr.send();
+            document.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
+                artistSpan2.innerText = '?';
+                artistSpan2.style.color = '#000';
+                artistSpan2.style.backgroundColor = 'rgb(0, 0, 0, 0)';
+            });
         }
     });
     console.log('artistsArr', artistsArr);
