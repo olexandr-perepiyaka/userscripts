@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      1.2.7
+// @version      2.0
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -389,7 +389,7 @@ function getAlbumReleasedDate(){
     xhr.send();
 }
 
-function getDivSpan(elem, spanClassName, attribSelector = '') {
+function appendDivHref(elem, hrefClassName, attribSelector = '') {
     var div = elem.querySelector('div.last-fm-info');
     if (!div) {
         div = document.createElement('div');
@@ -402,18 +402,20 @@ function getDivSpan(elem, spanClassName, attribSelector = '') {
         div.style.zIndex = '1';
         elem.appendChild(div);
     }
-    var selector = 'span.' + spanClassName + attribSelector;
-    console.log('selector', selector);
-    var span = div.querySelector(selector);
-    console.log('span', span);
-    if (!span) {
-        span = document.createElement('span');
-        span.className = spanClassName;
-        span.style.padding = '0 4px';
-        span.style.borderRadius = '0.5em';
-        div.appendChild(span);
+    var selector = 'a.' + hrefClassName + attribSelector;
+    //console.log('selector', selector);
+    var href = div.querySelector(selector);
+    //console.log('span', span);
+    if (!href) {
+        href = document.createElement('a');
+        href.className = hrefClassName;
+        href.target = '_blank';
+        href.style.textDecoration = 'none';
+        href.style.padding = '0 4px';
+        href.style.borderRadius = '0.5em';
+        div.appendChild(href);
     }
-    return span;
+    return href;
 }
 
 function targetTrackRoutine(elem) {
@@ -430,7 +432,7 @@ function targetTrackRoutine(elem) {
     if (artist && title && artist != '' && title != '') {
         elem.title = artist + " - " + title;
 
-        var artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + artist.replace(/"/g, '\\"') +'"]');
+        var artistPlcSpan = appendDivHref(elem, 'artist-plc', '[data-artist="' + artist.replace(/"/g, '\\"') +'"]');
         artistPlcSpan.dataset.artist = artist;
         artistPlcSpan.style.marginLeft = '4px';
         artistPlcSpan.title = artist + ' playcount request';
@@ -444,7 +446,7 @@ function targetTrackRoutine(elem) {
         console.log('featArtist', featArtist);
         if (featArtist && featArtist[1]) {
             console.log('featArtist[1]', featArtist[1]);
-            artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + featArtist[1].replace(/"/g, '\\"') +'"]');
+            artistPlcSpan = appendDivHref(elem, 'artist-plc', '[data-artist="' + featArtist[1].replace(/"/g, '\\"') +'"]');
             artistPlcSpan.dataset.artist = featArtist[1];
             artistPlcSpan.style.marginLeft = '4px';
             artistPlcSpan.title = featArtist[1] + ' playcount request';
@@ -462,7 +464,7 @@ function targetTrackRoutine(elem) {
             for (var j = 0; j < splittedArtist.length; j++) {
                 if (splittedArtist[j] != artist) {
                     console.log('splittedArtist[j]', splittedArtist[j]);
-                    artistPlcSpan = getDivSpan(elem, 'span-artist-plc', '[data-artist="' + splittedArtist[j].replace(/"/g, '\\"') +'"]');
+                    artistPlcSpan = appendDivHref(elem, 'artist-plc', '[data-artist="' + splittedArtist[j].replace(/"/g, '\\"') +'"]');
                     artistPlcSpan.dataset.artist = splittedArtist[j];
                     artistPlcSpan.style.marginLeft = '4px';
                     artistPlcSpan.title = splittedArtist[j] + ' playcount request';
@@ -470,7 +472,7 @@ function targetTrackRoutine(elem) {
             }
         }
 
-        var trScrSpan = getDivSpan(elem, 'span-track-scrobbles');
+        var trScrSpan = appendDivHref(elem, 'track-scrobbles');
         trScrSpan.innerText = '?';
         trScrSpan.style.color = '#000';
         trScrSpan.style.backgroundColor = 'rgb(0, 0, 0, 0)';
@@ -485,7 +487,8 @@ function targetTrackRoutine(elem) {
             + '&track=' + encodeURIComponent(title).replace(/%20/g, '+')
             + '&format=json'
         ;
-        console.log(url);
+        //console.log(url);
+        trScrSpan.href = url;
 
         var xhr = new XMLHttpRequest();
         xhr.responseType = "json";
@@ -497,22 +500,23 @@ function targetTrackRoutine(elem) {
                 elem.title += "\ntrack scrobbles error: " + this.response.message;
             } else {
                 if (this.response.trackscrobbles.track[0] !== undefined) {
+                    trScrSpan.href = 'https://www.last.fm/user/' + lastfmNickname + '/library/music/' + encodeURIComponent(artist).replace(/%20/g, '+') + '/_/' + encodeURIComponent(title).replace(/%20/g, '+');
                     trScrSpan.title = 'track scrobble(s) (date time - album)';
-                    var title = '';
+                    var atitle = '';
                     for (var t in this.response.trackscrobbles.track) {
                         date_uts = parseInt(this.response.trackscrobbles.track[t].date.uts) * 1000;
                         track_date = new Date(date_uts);
                         track_date_time = track_date.toLocaleString("sv-SE");
-                        title = "\n" + track_date_time + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '');
-                        elem.title += title;
-                        trScrSpan.title += title;
+                        atitle = "\n" + track_date_time + (this.response.trackscrobbles.track[t].album['#text'] != '' ? ' - ' + this.response.trackscrobbles.track[t].album['#text'] : '');
+                        elem.title += atitle;
+                        trScrSpan.title += atitle;
                     }
                     console.log('this.response.trackscrobbles.track.length', this.response.trackscrobbles.track.length);
                     trScrSpan.innerText = this.response.trackscrobbles.track.length;
                     trScrSpan.style.color = '#fff';
                     trScrSpan.style.backgroundColor = '#b90000';
-                    //elem.style.borderRight = '3px solid #b90000';
                 } else {
+                    trScrSpan.href = 'https://www.last.fm/music/' + encodeURIComponent(artist).replace(/%20/g, '+') + '/_/' + encodeURIComponent(title).replace(/%20/g, '+');
                     trScrSpan.innerText = '0';
                     trScrSpan.style.color = '#fff';
                     trScrSpan.style.backgroundColor = 'rgb(185, 0, 0, 0.25)';
@@ -535,7 +539,7 @@ function targetTrackRoutine(elem) {
         ;
         console.log(url);
 
-        var trLikeSpan = getDivSpan(elem, 'span-track-like');
+        var trLikeSpan = appendDivHref(elem, 'span-track-like');
         trLikeSpan.style.display = 'none';
         xhr = new XMLHttpRequest();
         xhr.responseType = "json";
@@ -562,7 +566,7 @@ function artistsRoutine(elem = null) {
         artistSpansParent = elem;
     }
     var artistsArr = [];
-    artistSpansParent.querySelectorAll('.span-artist-plc').forEach(function (artistSpan){
+    artistSpansParent.querySelectorAll('.artist-plc').forEach(function (artistSpan){
         if (artistsArr.indexOf(artistSpan.dataset.artist) < 0) {
             artistsArr.push(artistSpan.dataset.artist);
 
@@ -579,25 +583,18 @@ function artistsRoutine(elem = null) {
             xhr.responseType = "json";
             xhr.onloadend = function () {
                 var response = this.response;
-                document.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
+                document.querySelectorAll('.artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
                     if (response.error === undefined) {
-                        artistSpan2.innerText = '';
+                        artistSpan2.textContent = response.artist.stats.userplaycount;
                         artistSpan2.title = response.artist.name + ' playcount';
-                        var el = document.createElement("a");
-                        el.target = '_blank';
-                        el.style.textDecoration = 'none';
-                        el.style.color = '#fff';
-                        el.textContent = response.artist.stats.userplaycount;
+                        artistSpan2.style.color = '#fff';
                         if (parseInt(response.artist.stats.userplaycount) > 0) {
-                            artistSpan2.style.color = '#fff';
                             artistSpan2.style.backgroundColor = 'rgb(0, 0, 185)';
-                            el.href = 'https://www.last.fm/user/' + lastfmNickname + '/library/music/' + encodeURIComponent(response.artist.name).replace(/%20/g, '+');;
+                            artistSpan2.href = 'https://www.last.fm/user/' + lastfmNickname + '/library/music/' + encodeURIComponent(response.artist.name).replace(/%20/g, '+');;
                         } else {
-                            artistSpan2.style.color = '#fff';
                             artistSpan2.style.backgroundColor = 'rgb(0, 0, 185, 0.25)';
-                            el.href = response.artist.url;
+                            artistSpan2.href = response.artist.url;
                         }
-                        artistSpan2.appendChild(el);
 
                         if (response.artist.tags.tag.length > 0) {
                             artistSpan2.title += "\ntags:";
@@ -606,6 +603,7 @@ function artistsRoutine(elem = null) {
                             }
                         }
                     } else {
+                        artistSpan2.href = 'https://www.last.fm/search/artists?q=' + encodeURIComponent(artistSpan2.dataset.artist).replace(/%20/g, '+');
                         artistSpan2.innerText = '!';
                         artistSpan2.style.color = '#fff';
                         artistSpan2.style.backgroundColor = 'rgb(0, 0, 185, 0.25)';
@@ -614,7 +612,7 @@ function artistsRoutine(elem = null) {
                 });
             }
             xhr.send();
-            document.querySelectorAll('.span-artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
+            document.querySelectorAll('.artist-plc[data-artist="' + artistSpan.dataset.artist +'"]').forEach(function (artistSpan2) {
                 artistSpan2.innerText = '?';
                 artistSpan2.style.color = '#000';
                 artistSpan2.style.backgroundColor = 'rgb(0, 0, 0, 0)';
