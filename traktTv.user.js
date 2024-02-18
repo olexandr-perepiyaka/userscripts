@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         traktTv.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.2
+// @version      0.0.3
 // @description  Script for Trakt.Tv pages
 // @author       alex.perepiyaka@gmail
 // @match        https://trakt.tv/*
@@ -9,7 +9,7 @@
 // @updateURL    https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/traktTv.user.js
 // ==/UserScript==
 
-document.addEventListener("readystatechange", (event) => {
+function main() {
     console.log(`document.readyState: ${document.readyState}`);
 
     console.log(document.location.href);
@@ -61,4 +61,6 @@ document.addEventListener("readystatechange", (event) => {
             }
         });
     }
-});
+}
+
+window.addEventListener("load", main);
