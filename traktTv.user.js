@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         traktTv.user.js
 // @namespace    http://tampermonkey.net/
-// @version      0.0.3
+// @version      0.0.4
 // @description  Script for Trakt.Tv pages
 // @author       alex.perepiyaka@gmail
 // @match        https://trakt.tv/*
+// @grant        GM_addStyle
 // @downloadURL  https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/traktTv.user.js
 // @updateURL    https://raw.githubusercontent.com/olexandr-perepiyaka/userscripts/master/traktTv.user.js
 // ==/UserScript==
@@ -15,18 +16,26 @@ function main() {
     console.log(document.location.href);
     if (document.location.href == 'https://trakt.tv/dashboard/schedule') {
         const stylus3 = document.querySelector('#stylus-3');
-        stylus3.sheet.insertRule('img.real.poster { display: none; }', stylus3.sheet.cssRules.length);
+        /*stylus3.sheet.insertRule('img.real.poster { display: none; }', stylus3.sheet.cssRules.length);
         stylus3.sheet.insertRule('body { font-family: proxima nova semibold;}', stylus3.sheet.cssRules.length);
         stylus3.sheet.insertRule('a { font-size: 14px; color: black; }', stylus3.sheet.cssRules.length);
         stylus3.sheet.insertRule('h4 a { color: #ed1c24; }', stylus3.sheet.cssRules.length);
         stylus3.sheet.insertRule('h4, h5, h6 { margin-block: 0; }', stylus3.sheet.cssRules.length);
 
-        /*const link = document.createElement('link');
+        const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = 'https://trakt.tv/assets/application-084920e1a7343f64c80392ccbf7bbf01dbca1de364f875069cd4657c57615e88.css';
         link.media = 'all';
         document.head.appendChild(link);*/
+
+        GM_addStyle(
+            `body { font-family: proxima nova semibold; }
+            img.real.poster { display: none; }
+            a { font-size: 14px; color: black; }
+            h4 a { color: #ed1c24; }
+            h4, h5, h6 { margin-block: 0; }`
+        );
 
         document.querySelectorAll('a').forEach(function (a) {
             var arr = a.href.split(/\/+/);
