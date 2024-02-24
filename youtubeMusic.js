@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.1
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -15,13 +15,13 @@ img.height = 24;
 img.style.cursor = 'pointer';
 img.style.marginLeft = '24px';
 document.getElementById('left-content').appendChild(img);
-img.onclick = main;
-
+img.oncontextmenu = main;
 
 const lastfmNickname = 'xander667';
 const lastfmAPIKey = 'a088b0c423e72ee735fd4b1e592341b4';
 
-function main() {
+function main(event) {
+    event.preventDefault();
     var trackStr, artistStr;
     var artistsArr = [];
 
@@ -487,7 +487,7 @@ function targetTrackRoutine(elem) {
             + '&track=' + encodeURIComponent(title).replace(/%20/g, '+')
             + '&format=json'
         ;
-        //console.log(url);
+        console.log(url);
         trScrSpan.href = url;
 
         var xhr = new XMLHttpRequest();
@@ -662,6 +662,14 @@ function elementEventListener(event) {
         }
     }
 }
+
+function badgesRoutines() {
+    document.querySelectorAll('ytmusic-responsive-list-item-renderer').forEach(function (elem) {
+        targetTrackRoutine(elem);
+    });
+    artistsRoutine();
+}
+img.onclick = badgesRoutines;
 
 document.body.onmouseover = function(event){elementEventListener(event)}
 document.body.onmouseout = function(event){elementEventListener(event)}
