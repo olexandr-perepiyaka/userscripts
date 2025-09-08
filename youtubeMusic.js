@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.1.1
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -389,6 +389,10 @@ function getAlbumReleasedDate(){
     xhr.send();
 }
 
+function getTrackReleasedDate(){
+    const gAPIurl = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&key=AIzaSyAFoISkwrca6mDMaIJc9kpfIr0OJNknlG4&id=b-3Fm0sekp4';
+}
+
 function appendDivHref(elem, hrefClassName, attribSelector = '') {
     var div = elem.querySelector('div.last-fm-info');
     if (!div) {
@@ -495,7 +499,7 @@ function targetTrackRoutine(elem) {
         xhr.open("GET", url, true);
         xhr.onloadend = function () {
             var date_uts, track_date, track_date_time;
-            //console.log(this.response);
+            console.log(this.response);
             if (this.response.error !== undefined) {
                 elem.title += "\ntrack scrobbles error: " + this.response.message;
             } else {
@@ -623,7 +627,7 @@ function artistsRoutine(elem = null) {
 }
 
 function bgColorOnMouse(event){
-    if (event.type == 'mouseover') event.target.style.backgroundColor = '#d9d9d9';
+    if (event.type == 'mouseover') event.target.style.backgroundColor = '#dadada';
     if (event.type == 'mouseout') event.target.style.removeProperty("background-color");
 }
 
