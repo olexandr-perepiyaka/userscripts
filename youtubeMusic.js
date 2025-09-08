@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      2.1.1
+// @version      2.1.2
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -42,6 +42,9 @@ function main(event) {
     if (ytmusicAlbumTracks.length > 0) {
         if (document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer').length > 0) {
             artistStr = document.querySelectorAll('yt-formatted-string.style-scope.ytmusic-detail-header-renderer')[1].textContent.split(" • ")[1].replace(/\p{C}/gu, '');
+        }
+        if (document.querySelectorAll('yt-formatted-string.strapline-text.style-scope.ytmusic-responsive-header-renderer').length > 0) {
+            artistStr = document.querySelectorAll('yt-formatted-string.strapline-text.style-scope.ytmusic-responsive-header-renderer')[0].title.replace(/\p{C}/gu, '');
         }
 
         ytmusicAlbumTracks.forEach(function (trackDiv) {
