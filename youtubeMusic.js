@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         youtubeMusic.js
 // @namespace    http://tampermonkey.net/
-// @version      2.1.2
+// @version      2.1.3
 // @description  Script for Youtube Music pages
 // @author       alex.perepiyaka@gmail
 // @match        https://music.youtube.com/*
@@ -49,9 +49,10 @@ function main(event) {
 
         ytmusicAlbumTracks.forEach(function (trackDiv) {
             trackStr = trackDiv.querySelector('div.title-column').querySelector('.title').title.replace(/\s+/g, ' ').trim();
-            if (trackDiv.querySelector('yt-formatted-string.flex-column.style-scope.ytmusic-responsive-list-item-renderer')
+            if (!artistStr 
+                && trackDiv.querySelector('yt-formatted-string.flex-column.style-scope.ytmusic-responsive-list-item-renderer')
                 && trackDiv.querySelector('yt-formatted-string.flex-column.style-scope.ytmusic-responsive-list-item-renderer').title !== ''
-               ) {
+            ) {
                 artistStr = trackDiv.querySelector('yt-formatted-string.flex-column.style-scope.ytmusic-responsive-list-item-renderer').title.trim();
             }
             createScrobbleDiv(trackDiv, trackStr, artistStr);
